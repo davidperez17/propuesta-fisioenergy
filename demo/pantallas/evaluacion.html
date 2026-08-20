@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Evaluación fisioterapéutica — FisioEnergy</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+  <style>
+html,body{overflow:hidden}
+    :root{--p:#0E7C6B;--p6:#0A6156;--p5:#ECFDF5;--p1:#D3F2E7;--acc:#FF6B35;
+      --ok:#16A34A;--wr:#F59E0B;--bd0:#DC2626;--bg:#FAFAF9;--sf:#FFFFFF;
+      --bd:#E7E5E4;--bd2:#F5F5F4;--t1:#1C1917;--t2:#57534E;--t3:#A8A29E;
+      --sh:0 1px 2px rgba(28,25,23,.04),0 4px 12px rgba(28,25,23,.05)}
+    *{box-sizing:border-box}
+    body{margin:0;background:#FAFAF9;color:#1C1917;font-family:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased}
+    h1,h2,h3,h4{font-family:"Plus Jakarta Sans","IBM Plex Sans",sans-serif;margin:0;letter-spacing:-.025em;font-weight:700}
+    a{color:#0E7C6B;text-decoration:none}a:hover{color:#0A6156}
+    .n{font-variant-numeric:tabular-nums;font-weight:600}
+    input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:9px;border-radius:999px;outline:none;margin:0;cursor:pointer}
+    input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;border:3px solid #0E7C6B;box-shadow:0 1px 4px rgba(28,25,23,.25);cursor:pointer}
+    input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;border:3px solid #0E7C6B;box-shadow:0 1px 4px rgba(28,25,23,.25);cursor:pointer;border-color:#0E7C6B}
+    .g input{width:52px;border:1px solid #E7E5E4;border-radius:6px;padding:5px 7px;font:inherit;font-variant-numeric:tabular-nums;font-weight:600;text-align:center;background:#fff;color:#1C1917}
+    .g input:focus{outline:2px solid #D3F2E7;border-color:#0E7C6B}
+    button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+    textarea{font:inherit;width:100%;border:1px solid #E7E5E4;border-radius:8px;padding:10px 12px;resize:none;background:#fff;color:#1C1917}
+    textarea:focus{outline:2px solid #D3F2E7;border-color:#0E7C6B}
+  </style>
+
+</head>
+<body>
+
+
+
+<div style="display:flex;width:1440px;height:1024px;background:var(--bg);overflow:hidden;font-family:'IBM Plex Sans',sans-serif">
+
+  <aside style="width:240px;flex:0 0 240px;background:var(--sf);border-right:1px solid var(--bd);display:flex;flex-direction:column;padding:20px 0">
+    <div style="padding:0 20px 26px;display:flex;align-items:center;gap:9px">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      <span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;font-weight:800;letter-spacing:-.035em">Fisio<span style="color:var(--p)">Energy</span></span>
+    </div>
+    <nav style="display:flex;flex-direction:column;gap:2px;padding:0 12px">
+      <div style="display:flex;align-items:center;gap:11px;padding:9px 12px;border-radius:8px;color:var(--t2)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg>Inicio</div>
+      <div style="display:flex;align-items:center;gap:11px;padding:9px 12px;border-radius:8px;background:var(--p5);color:var(--p);font-weight:600"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Pacientes</div>
+      <div style="display:flex;align-items:center;gap:11px;padding:9px 12px;border-radius:8px;color:var(--t2)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Agenda</div>
+      <div style="display:flex;align-items:center;gap:11px;padding:9px 12px;border-radius:8px;color:var(--t2)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg>Reportes</div>
+      <div style="display:flex;align-items:center;gap:11px;padding:9px 12px;border-radius:8px;color:var(--t2)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg>Ajustes</div>
+    </nav>
+    <div style="margin-top:auto;padding:14px 12px 0;border-top:1px solid var(--bd2);margin-left:12px;margin-right:12px;display:flex;align-items:center;gap:10px">
+      <div style="width:34px;height:34px;flex:0 0 34px;border-radius:50%;background:var(--p);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:12px">AM</div>
+      <div style="min-width:0"><div style="font-weight:600;font-size:13px">Lcda. Andrea Morales</div><div style="font-size:11.5px;color:var(--t3)">Fisioterapeuta</div></div>
+    </div>
+  </aside>
+
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+
+    <header style="height:64px;flex:0 0 64px;background:var(--sf);border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:14px;padding:0 28px">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#57534E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      <div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:15.5px">Evaluación inicial — María Fernanda Lucero</div>
+        <div style="font-size:12px;color:var(--t3)">34 años · Femenino · Lumbalgia mecánica</div>
+      </div>
+      <div style="margin-left:auto;display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ok);font-weight:500">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Guardado automático · hace 4 segundos
+      </div>
+    </header>
+
+    <div style="background:var(--sf);border-bottom:1px solid var(--bd);padding:16px 28px 14px">
+      <div style="display:flex;align-items:flex-start;gap:0;max-width:1140px">
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;position:relative">
+          <div style="position:absolute;top:11px;left:50%;right:-50%;height:2px;background:var(--p)"></div>
+          <div style="width:22px;height:22px;border-radius:50%;background:var(--p);color:#fff;display:flex;align-items:center;justify-content:center;position:relative;z-index:1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <span style="font-size:11.5px;color:var(--t2);font-weight:500">Datos personales</span>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;position:relative">
+          <div style="position:absolute;top:11px;left:-50%;right:-50%;height:2px;background:var(--p)"></div>
+          <div style="width:22px;height:22px;border-radius:50%;background:var(--p);color:#fff;display:flex;align-items:center;justify-content:center;position:relative;z-index:1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <span style="font-size:11.5px;color:var(--t2);font-weight:500">Motivo</span>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;position:relative">
+          <div style="position:absolute;top:11px;left:-50%;right:-50%;height:2px;background:var(--p)"></div>
+          <div style="width:22px;height:22px;border-radius:50%;background:var(--p);color:#fff;display:flex;align-items:center;justify-content:center;position:relative;z-index:1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <span style="font-size:11.5px;color:var(--t2);font-weight:500">Historial</span>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;position:relative">
+          <div style="position:absolute;top:11px;left:-50%;right:-50%;height:2px;background:var(--p)"></div>
+          <div style="width:22px;height:22px;border-radius:50%;background:var(--p);color:#fff;display:flex;align-items:center;justify-content:center;position:relative;z-index:1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <span style="font-size:11.5px;color:var(--t2);font-weight:500">Banderas rojas</span>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;position:relative">
+          <div style="position:absolute;top:11px;left:-50%;width:50%;height:2px;background:var(--p)"></div>
+          <div style="position:absolute;top:11px;left:50%;right:-50%;height:2px;background:var(--bd)"></div>
+          <div style="width:22px;height:22px;border-radius:50%;background:var(--p);color:#fff;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;box-shadow:0 0 0 4px var(--p5)"><span class="n" style="font-size:11px">5</span></div>
+          <span style="font-size:11.5px;color:var(--p);font-weight:700">Evaluación física</span>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;position:relative">
+          <div style="position:absolute;top:11px;left:-50%;right:-50%;height:2px;background:var(--bd)"></div>
+          <div style="width:22px;height:22px;border-radius:50%;background:var(--sf);border:2px solid var(--bd);color:var(--t3);display:flex;align-items:center;justify-content:center;position:relative;z-index:1"><span class="n" style="font-size:11px">6</span></div>
+          <span style="font-size:11.5px;color:var(--t3)">Diagnóstico y plan</span>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;position:relative">
+          <div style="position:absolute;top:11px;left:-50%;right:-50%;height:2px;background:var(--bd)"></div>
+          <div style="width:22px;height:22px;border-radius:50%;background:var(--sf);border:2px solid var(--bd);color:var(--t3);display:flex;align-items:center;justify-content:center;position:relative;z-index:1"><span class="n" style="font-size:11px">7</span></div>
+          <span style="font-size:11.5px;color:var(--t3)">Cita</span>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;position:relative">
+          <div style="position:absolute;top:11px;left:-50%;width:50%;height:2px;background:var(--bd)"></div>
+          <div style="width:22px;height:22px;border-radius:50%;background:var(--sf);border:2px solid var(--bd);color:var(--t3);display:flex;align-items:center;justify-content:center;position:relative;z-index:1"><span class="n" style="font-size:11px">8</span></div>
+          <span style="font-size:11.5px;color:var(--t3)">Consentimiento</span>
+        </div>
+      </div>
+    </div>
+
+    <main style="flex:1;overflow:hidden;padding:20px 28px">
+      <div style="display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:20px;height:100%">
+
+        <div style="display:flex;flex-direction:column;gap:14px;min-height:0">
+          <div style="background:var(--sf);border:1px solid var(--bd);border-radius:12px;box-shadow:var(--sh);padding:16px 18px">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+              <h3 style="font-size:14.5px">Mapa del dolor</h3>
+              <span style="font-size:11.5px;color:var(--t3)">Toque para marcar</span>
+            </div>
+            <div style="display:flex;gap:8px;justify-content:center;background:var(--bg);border-radius:10px;padding:10px 0 6px">
+              <div style="text-align:center">
+                <svg width="132" height="248" viewBox="0 0 120 250" fill="#F5F5F4" stroke="#A8A29E" stroke-width="1.4">
+                  <ellipse cx="60" cy="21" rx="14" ry="16.5"/><rect x="54" y="35" width="12" height="9" rx="3"/>
+                  <rect x="37" y="43" width="46" height="60" rx="15"/><rect x="41" y="99" width="38" height="30" rx="11"/>
+                  <rect x="21" y="50" width="13" height="62" rx="6.5"/><rect x="86" y="50" width="13" height="62" rx="6.5"/>
+                  <ellipse cx="27.5" cy="119" rx="7" ry="9"/><ellipse cx="92.5" cy="119" rx="7" ry="9"/>
+                  <rect x="42" y="126" width="16" height="60" rx="8"/><rect x="62" y="126" width="16" height="60" rx="8"/>
+                  <rect x="43" y="184" width="14" height="52" rx="7"/><rect x="63" y="184" width="14" height="52" rx="7"/>
+                  <ellipse cx="50" cy="242" rx="8.5" ry="6"/><ellipse cx="70" cy="242" rx="8.5" ry="6"/>
+                </svg>
+                <div style="font-size:11px;color:var(--t3);margin-top:2px">Anterior</div>
+              </div>
+              <div style="text-align:center;position:relative">
+                <svg width="132" height="248" viewBox="0 0 120 250" fill="#F5F5F4" stroke="#A8A29E" stroke-width="1.4">
+                  <ellipse cx="60" cy="21" rx="14" ry="16.5"/><rect x="54" y="35" width="12" height="9" rx="3"/>
+                  <rect x="37" y="43" width="46" height="60" rx="15"/><rect x="41" y="99" width="38" height="30" rx="11"/>
+                  <rect x="21" y="50" width="13" height="62" rx="6.5"/><rect x="86" y="50" width="13" height="62" rx="6.5"/>
+                  <ellipse cx="27.5" cy="119" rx="7" ry="9"/><ellipse cx="92.5" cy="119" rx="7" ry="9"/>
+                  <rect x="42" y="126" width="16" height="60" rx="8"/><rect x="62" y="126" width="16" height="60" rx="8"/>
+                  <rect x="43" y="184" width="14" height="52" rx="7"/><rect x="63" y="184" width="14" height="52" rx="7"/>
+                  <ellipse cx="50" cy="242" rx="8.5" ry="6"/><ellipse cx="70" cy="242" rx="8.5" ry="6"/>
+                  <circle cx="60" cy="92" r="17" fill="#DC2626" fill-opacity=".45" stroke="#DC2626" stroke-opacity=".7" stroke-width="1.4"/>
+                  <circle cx="70" cy="115" r="11" fill="#F59E0B" fill-opacity=".45" stroke="#F59E0B" stroke-opacity=".8" stroke-width="1.4"/>
+                  <circle cx="70" cy="150" r="8" fill="#FBBF24" fill-opacity=".38" stroke="#FBBF24" stroke-opacity=".8" stroke-width="1.4"/>
+                </svg>
+                <div style="font-size:11px;color:var(--t3);margin-top:2px">Posterior</div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;margin-top:10px;font-size:11px;color:var(--t2)">
+              <span>Intensidad</span>
+              <span style="flex:1;height:7px;border-radius:999px;background:linear-gradient(90deg,#FDE68A,#F59E0B,#DC2626)"></span>
+              <span>leve → severo</span>
+            </div>
+          </div>
+
+          <div style="background:var(--sf);border:1px solid var(--bd);border-radius:12px;box-shadow:var(--sh);padding:16px 18px;flex:1">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:2px">
+              <h3 style="font-size:14.5px">Dolor — escala EVA</h3>
+              <span style="font-size:11px;color:var(--acc);font-weight:600;background:#FFF3ED;border-radius:5px;padding:2px 7px">VALOR BASAL</span>
+            </div>
+            <div style="font-size:11.5px;color:var(--t3);margin-bottom:16px">Se comparará automáticamente en cada sesión</div>
+
+            <div style="margin-bottom:18px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:9px">
+                <span style="font-size:13px;font-weight:500;color:var(--t2)">En reposo</span>
+                <span class="n" style="font-size:20px;background:var(--p5);color:var(--p);border-radius:8px;padding:1px 11px">3</span>
+              </div>
+              <input data-role="eva-rep" type="range" min="0" max="10" step="1" value="3" style="background:linear-gradient(90deg,#16A34A,#FBBF24 55%,#DC2626)">
+            </div>
+
+            <div style="margin-bottom:18px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:9px">
+                <span style="font-size:13px;font-weight:500;color:var(--t2)">Al movimiento</span>
+                <span class="n" style="font-size:20px;background:#FEF2F2;color:var(--bd0);border-radius:8px;padding:1px 11px">7</span>
+              </div>
+       <input data-role="eva-mov" type="range""range" min="0" max="10" step="1" value="7" style="background:linear-gradient(90deg,#16A34A,#FBBF24 55%,#DC2626)">
+            </div>
+
+            <div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:9px">
+                <span style="font-size:13px;font-weight:500;color:var(--t2)">Nocturno</span>
+                <span class="n" style="font-size:20px;background:#FFFBEB;color:#B45309;border-radius:8px;padding:1px 11px">5</span>
+              </div>
+<input data-role="eva-noc" type="range"t type="range" min="0" max="10" step="1" value="5" style="background:linear-gradient(90deg,#16A34A,#FBBF24 55%,#DC2626)">
+            </div>
+
+            <div style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--t3);margin-top:6px">
+              <span>0 · sin dolor</span><span>10 · máximo</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:var(--sf);border:1px solid var(--bd);border-radius:12px;box-shadow:var(--sh);display:flex;flex-direction:column;min-height:0;overflow:hidden">
+
+          <div style="display:flex;gap:2px;padding:8px 10px 0;border-bottom:1px solid var(--bd);overflow:hidden">
+            <button data-tab="insp" style="padding:9px 13px;border-radius:8px 8px 0 0;font-size:12.5px;font-weight:500;color:#57534E;background:transparent;border-bottom:2px solid transparent">Inspección</button>
+            <button data-tab="palp" style="padding:9px 13px;border-radius:8px 8px 0 0;font-size:12.5px;font-weight:500;color:#57534E;background:transparent;border-bottom:2px solid transparent">Palpación</button>
+            <button data-tab="rom" style="padding:9px 13px;border-radius:8px 8px 0 0;font-size:12.5px;font-weight:700;color:#0E7C6B;background:#ECFDF5;border-bottom:2px solid #0E7C6B">Rango de movimiento</button>
+            <button data-tab="fza" style="padding:9px 13px;border-radius:8px 8px 0 0;font-size:12.5px;font-weight:500;color:#57534E;background:transparent;border-bottom:2px solid transparent">Fuerza</button>
+            <button data-tab="pru" style="padding:9px 13px;border-radius:8px 8px 0 0;font-size:12.5px;font-weight:500;color:#57534E;background:transparent;border-bottom:2px solid transparent">Pruebas especiales</button>
+            <button data-tab="fun" style="padding:9px 13px;border-radius:8px 8px 0 0;font-size:12.5px;font-weight:500;color:#57534E;background:transparent;border-bottom:2px solid transparent">Funcional</button>
+          </div>
+
+          <div style="flex:1;overflow:auto;padding:18px 20px">
+
+            <div data-panel="rom">
+              <div>
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap">
+                  <span style="font-size:12.5px;color:var(--t2);margin-right:2px">Articulación:</span>
+                  <span style="font-size:12.5px;font-weight:600;background:var(--p);color:#fff;border-radius:999px;padding:5px 13px">Columna lumbar</span>
+                  <span style="font-size:12.5px;color:var(--t2);border:1px solid var(--bd);border-radius:999px;padding:5px 13px">Cadera</span>
+                  <span style="font-size:12.5px;color:var(--t2);border:1px solid var(--bd);border-radius:999px;padding:5px 13px">Rodilla</span>
+                  <span style="font-size:12.5px;color:var(--t2);border:1px solid var(--bd);border-radius:999px;padding:5px 13px">Tobillo</span>
+                  <span style="margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:var(--t3)">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21H3V3"/><path d="M3 15a12 12 0 0 1 12-12"/></svg>Goniometría · activo y pasivo</span>
+                </div>
+
+                <table class="g" style="width:100%;border-collapse:collapse;font-size:13px">
+                  <thead><tr style="text-align:left;color:var(--t2);font-size:11.5px;letter-spacing:.03em;text-transform:uppercase">
+                    <th style="padding:0 0 8px;font-weight:600">Movimiento</th>
+                    <th style="padding:0 0 8px;font-weight:600;width:88px">Activo</th>
+                    <th style="padding:0 0 8px;font-weight:600;width:88px">Pasivo</th>
+                    <th style="padding:0 0 8px;font-weight:600;width:82px">Normal</th>
+                    <th style="padding:0 0 8px;font-weight:600;width:96px">Déficit</th></tr></thead>
+                  <tbody>
+                    <tr style="border-top:1px solid var(--bd2)"><td style="padding:7px 0">Flexión</td><td><input value="45"></td><td><input value="52"></td><td class="n" style="color:var(--t3)">60°</td><td><span class="n" style="font-size:12.5px;color:#B45309;background:#FFFBEB;border-radius:6px;padding:3px 9px">−15°</span></td></tr>
+                    <tr style="border-top:1px solid var(--bd2)"><td style="padding:7px 0">Extensión</td><td><input value="12"></td><td><input value="15"></td><td class="n" style="color:var(--t3)">25°</td><td><span class="n" style="font-size:12.5px;color:var(--bd0);background:#FEF2F2;border-radius:6px;padding:3px 9px">−13°</span></td></tr>
+                    <tr style="border-top:1px solid var(--bd2)"><td style="padding:7px 0">Inclinación izquierda</td><td><input value="18"></td><td><input value="20"></td><td class="n" style="color:var(--t3)">25°</td><td><span class="n" style="font-size:12.5px;color:#B45309;background:#FFFBEB;border-radius:6px;padding:3px 9px">−7°</span></td></tr>
+                    <tr style="border-top:1px solid var(--bd2)"><td style="padding:7px 0">Inclinación derecha</td><td><input value="10"></td><td><input value="12"></td><td class="n" style="color:var(--t3)">25°</td><td><span class="n" style="font-size:12.5px;color:var(--bd0);background:#FEF2F2;border-radius:6px;padding:3px 9px">−15°</span></td></tr>
+                    <tr style="border-top:1px solid var(--bd2)"><td style="padding:7px 0">Rotación izquierda</td><td><input value="22"></td><td><input value="25"></td><td class="n" style="color:var(--t3)">30°</td><td><span class="n" style="font-size:12.5px;color:#B45309;background:#FFFBEB;border-radius:6px;padding:3px 9px">−8°</span></td></tr>
+                    <tr style="border-top:1px solid var(--bd2)"><td style="padding:7px 0">Rotación derecha</td><td><input value="15"></td><td><input value="18"></td><td class="n" style="color:var(--t3)">30°</td><td><span class="n" style="font-size:12.5px;color:var(--bd0);background:#FEF2F2;border-radius:6px;padding:3px 9px">−15°</span></td></tr>
+                  </tbody>
+                </table>
+                <div style="margin-top:12px;font-size:12px;color:var(--t3)">Los valores normales provienen del catálogo editable en Ajustes.</div>
+              </div>
+            </div>
+
+            <div data-panel="fza" hidden>
+              <div>
+                <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px">
+                  <h4 style="font-size:14px">Fuerza muscular — escala Daniels</h4>
+                  <span style="font-size:11.5px;color:var(--t3)">0 = sin contracción · 5 = normal</span>
+                </div>
+                <div style="font-size:12px;color:var(--t2);margin-bottom:16px">Toque el valor observado en cada grupo muscular.</div>
+
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-top:1px solid var(--bd2)">
+                  <span style="font-size:13.5px;font-weight:500">Extensores lumbares</span>
+                  <div style="display:flex;gap:5px">
+                    <button style="width:34px;height:34px;border-radius:8px;border:1px solid #E7E5E4;background:#FFFFFF;color:#57534E;font-weight:600;font-variant-numeric:tabular-nums">0</button>
+                    <button style="width:34px;height:34px;border-radius:8px;border:1px solid #E7E5E4;background:#FFFFFF;color:#57534E;font-weight:600;font-variant-numeric:tabular-nums">1</button>
+                    <button style="width:34px;height:34px;border-radius:8px;border:1px solid #E7E5E4;background:#FFFFFF;color:#57534E;font-weight:600;font-variant-numeric:tabular-nums">2</button>
+                    <button style="width:34px;height:34px;border-radius:8px;border:1px solid #0E7C6B;background:#0E7C6B;color:#FFFFFF;font-weight:600;font-variant-numeric:tabular-nums">3</button>
+                    <button style="width:34px;height:34px;border-radius:8px;border:1px solid #E7E5E4;background:#FFFFFF;color:#57534E;font-weight:600;font-variant-numeric:tabular-nums">4</button>
+                    <button style="width:34px;height:34px;border-radius:8px;border:1px solid #E7E5E4;background:#FFFFFF;color:#57534E;font-weight:600;font-variant-numeric:tabular-nums">5</button>
+                  </div>
+                </div>
+
+                
+                  <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-top:1px solid var(--bd2)">
+                    <span style="font-size:13.5px;font-weight:500">Abdominales profundos</span>
+                    <div style="display:flex;gap:5px">
+                      
+                        <span style="width:34px;height:34px;border-radius:8px;border:1px solid #E7E5E4;background:#FFFFFF;color:#57534E;font-weight:600;font-variant-numeric:tabular-nums;display:flex;align-items:center;justify-content:center;font-size:13.5px">0</span>
+                      
+                        <span style="width:34px;height:34px;border-radius:8px;border:1px solid #E7E5E4;background:#FFFFFF;color:#57534E;font-weight:600;font-variant-numeric:tabular-nums;display:flex;align-items:center;justify-content:center;font-size:13.5px">1</span>
+                      
+                        <span style="width:34px;height:34px;border-radius:8px;border:1px solid #E7E5E4;background:#FFFFFF;color:#57534E;font-weight:600;font-variant-numeric:tabular-nums;display:flex;align-items:center;justify-content:center;font-size:13.5px">2</span>
+                      
+                        <span style="width:34px;height:34px;border-radius:8px;border:1px solid #E7E5E4;background:#FFFFFF;color:#57534E;font-weight:600;font-variant-numeric:tabular-nums;display:flex;align-items:center;justify-content:center;font-size:13.5px">3</span>
+                      
+                        <span style="width:34px;height:34px;border-radius:8px;border:1px solid #0E7C6B;background:#0E7C6B;color:#FFFFFF;font-weight:600;font-variant-numeric:tabular-nums;display:flex;align-items:center;justify-content:center;font-size:13.5px">4</span>
+                      
+                        <span style="width:34px;height:34px;border-radius:8px;border:1px solid #E7E5E4;background:#FFFFFF;color:#57534E;font-weight:600;font-variant-numeric:tabular-nums;display:flex;align-items:center;justify-content:center;font-size:13.5px">5</span>
+                      
+                    </div>
+                  </div>
+                
+                  <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-top:1px solid var(--bd2)">
+                    <span style="font-size:13.5px;font-weight:500">Glúteo mayor derecho</span>
+                    <div style="display:flex;gap:5px">
+                      
+                        <span style="width:34px;height:34px;border-radius:8px;border:1px solid #E7E5E4;background:#FFFFFF;color:#57534E;font-weight:600;font-variant-numeric:tabular-nums;display:flex;align-items:center;justify-content:center;font-size:13.5px">0</span>
+                      
+                        <span style="width:34px;height:34px;border-radius:8px;border:1px solid #E7E5E4;background:#FFFFFF;color:#57534E;font-weight:600;font-variant-numeric:tabular-nums;display:flex;align-items:center;justify-content:center;font-size:13.5px">1</span>
+                      
+                        <span style="width:34px;height:34px;border-radius:8px;border:1px solid #E7E5E4;background:#FFFFFF;color:#57534E;font-weight:600;font-variant-numeric:tabular-nums;display:flex;align-items:center;justify-content:center;font-size:13.5px">2</span>
+                      
+                        <span style="width:34px;height:34px;border-radius:8px;border:1px solid #0E7C6B;background:#0E7C6B;color:#FFFFFF;font-weight:600;font-variant-numeric:tabular-nums;display:flex;align-items:center;justify-content:center;font-size:13.5px">3</span>
+                      
+                        <span style="width:34px;height:34px;border-radius:8px;border:1px solid #E7E5E4;background:#FFFFFF;color:#57534E;font-weight:600;font-variant-numeric:tabular-nums;display:flex;align-items:center;justify-content:center;font-size:13.5px">4</span>
+                      
+                        <span style="width:34px;height:34px;border-radius:8px;border:1px solid #E7E5E4;background:#FFFFFF;color:#57534E;font-weight:600;font-variant-numeric:tabular-nums;display:flex;align-items:center;justify-content:center;font-size:13.5px">5</span>
+                      
+                    </div>
+                  </div>
+                
+                  <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-top:1px solid var(--bd2)">
+                    <span style="font-size:13.5px;font-weight:500">Glúteo medio derecho</span>
+                    <div style="display:flex;gap:5px">
+                      
+                        <span style="width:34px;height:34px;border-radius:8px;border:1px solid #E7E5E4;background:#FFFFFF;color:#57534E;font-weight:600;font-variant-numeric:tabular-nums;display:flex;align-items:center;justify-content:center;font-size:13.5px">0</span>
+                      
+                        <span style="width:34px;height:34px;border-radius:8px;border:1px solid #E7E5E4;background:#FFFFFF;color:#57534E;font-weight:600;font-variant-numeric:tabular-nums;display:flex;align-items:center;justify-content:center;font-size:13.5px">1</span>
+                      
+                        <span style="width:34px;height:34px;border-radius:8px;border:1px solid #E7E5E4;background:#FFFFFF;color:#57534E;font-weight:600;font-variant-numeric:tabular-nums;display:flex;align-items:center;justify-content:center;font-size:13.5px">2</span>
+                      
+                        <span style="width:34px;height:34px;border-radius:8px;border:1px solid #0E7C6B;background:#0E7C6B;color:#FFFFFF;font-weight:600;font-variant-numeric:tabular-nums;display:flex;align-items:center;justify-content:center;font-size:13.5px">3</span>
+                      
+                        <span style="width:34px;height:34px;border-radius:8px;border:1px solid #E7E5E4;background:#FFFFFF;color:#57534E;font-weight:600;font-variant-numeric:tabular-nums;display:flex;align-items:center;justify-content:center;font-size:13.5px">4</span>
+                      
+                        <span style="width:34px;height:34px;border-radius:8px;border:1px solid #E7E5E4;background:#FFFFFF;color:#57534E;font-weight:600;font-variant-numeric:tabular-nums;display:flex;align-items:center;justify-content:center;font-size:13.5px">5</span>
+                      
+                    </div>
+                  </div>
+                
+                <div style="margin-top:14px;font-size:12px;color:var(--t3)">Cada valor queda como línea base y se re-mide en la evaluación de control.</div>
+              </div>
+            </div>
+
+            <div data-panel="fun" hidden>
+              <div>
+                <h4 style="font-size:14px;margin-bottom:3px">Escala Funcional Específica del Paciente (PSFS)</h4>
+                <div style="font-size:12.5px;color:var(--t2);margin-bottom:18px">La paciente eligió tres actividades que hoy no puede hacer con normalidad. Se vuelven a calificar en cada re-evaluación.</div>
+
+                <div style="border:1px solid var(--bd);border-radius:10px;padding:14px 16px;margin-bottom:12px">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:9px">
+                    <span style="font-size:13.5px;font-weight:500">1. Levantarme de la cama</span>
+                    <span class="n" style="font-size:19px;background:#FEF2F2;color:var(--bd0);border-radius:8px;padding:1px 11px">4</span>
+                  </di<input data-role="psfs-1" type="range"  <input type="range" min="0" max="10" step="1" value="4" style="background:linear-gradient(90deg,#DC2626,#FBBF24 55%,#16A34A)">
+                </div>
+                <div style="border:1px solid var(--bd);border-radius:10px;padding:14px 16px;margin-bottom:12px">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:9px">
+                    <span style="font-size:13.5px;font-weight:500">2. Cargar a mi hijo de 2 años</span>
+                    <span class="n" style="font-size:19px;background:#FEF2F2;color:var(--bd0);border-radius:8px;padding:1px 11px">2</span>
+                <input data-role="psfs-2" type="range"        <input type="range" min="0" max="10" step="1" value="2" style="background:linear-gradient(90deg,#DC2626,#FBBF24 55%,#16A34A)">
+                </div>
+                <div style="border:1px solid var(--bd);border-radius:10px;padding:14px 16px">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:9px">
+                    <span style="font-size:13.5px;font-weight:500">3. Estar sentada 1 hora en el trabajo</span>
+                    <span class="n" style="font-size:19px;background:#FEF2F2;color:var(--bd0);border-radius:8px;padding:1px 11px">3</span>
+          <input data-role="psfs-3" type="range"              <input type="range" min="0" max="10" step="1" value="3" style="background:linear-gradient(90deg,#DC2626,#FBBF24 55%,#16A34A)">
+                </div>
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding:12px 16px;background:var(--p5);border-radius:10px">
+                  <span style="font-size:13px;color:var(--p6);font-weight:500">Promedio PSFS basal</span>
+                  <span class="n" id="psfs-prom" style="font-size:20px;color:var(--p)">3.0 <span style="font-size:12px;color:var(--t3);font-weight:500">/ 10</span></span>
+                </div>
+              </div>
+            </div>
+
+            <div data-panel="insp" hidden>
+              <div>
+                <h4 style="font-size:14px;margin-bottom:12px">Inspección y evaluación postural</h4>
+                <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px">
+                  <span style="font-size:12.5px;font-weight:600;background:var(--p);color:#fff;border-radius:999px;padding:5px 12px">Hiperlordosis lumbar</span>
+                  <span style="font-size:12.5px;font-weight:600;background:var(--p);color:#fff;border-radius:999px;padding:5px 12px">Anteversión pélvica</span>
+                  <span style="font-size:12.5px;color:var(--t2);border:1px solid var(--bd);border-radius:999px;padding:5px 12px">Escoliosis</span>
+                  <span style="font-size:12.5px;color:var(--t2);border:1px solid var(--bd);border-radius:999px;padding:5px 12px">Hombros asimétricos</span>
+                  <span style="font-size:12.5px;color:var(--t2);border:1px solid var(--bd);border-radius:999px;padding:5px 12px">Rodilla valga</span>
+                  <span style="font-size:12.5px;color:var(--t2);border:1px solid var(--bd);border-radius:999px;padding:5px 12px">Pie plano</span>
+                  <span style="font-size:12.5px;color:var(--p);border:1px dashed var(--p1);border-radius:999px;padding:5px 12px">+ Agregar hallazgo</span>
+                </div>
+                <div style="font-size:12.5px;font-weight:600;color:var(--t2);margin-bottom:7px">Observaciones</div>
+                <textarea rows="7">Bipedestación con aumento de la lordosis lumbar y anteversión pélvica marcada. Descarga preferente en miembro inferior izquierdo. Marcha antiálgica leve, con disminución de la fase de apoyo derecha. No se observan cambios tróficos ni de coloración en la piel de la región lumbar.</textarea>
+                <div style="display:flex;align-items:center;gap:9px;margin-top:14px;border:1px dashed var(--bd);border-radius:10px;padding:14px;color:var(--t3);font-size:12.5px;justify-content:center">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="15" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M8 5l1.5-2h5L16 5"/></svg>
+                  Adjuntar fotografía postural (opcional)
+                </div>
+              </div>
+            </div>
+
+            <div data-panel="palp" hidden>
+              <div>
+                <h4 style="font-size:14px;margin-bottom:12px">Palpación</h4>
+                <div style="border:1px solid var(--bd);border-radius:10px;overflow:hidden;margin-bottom:16px">
+                  <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 14px;background:var(--bg);font-size:11.5px;color:var(--t2);text-transform:uppercase;letter-spacing:.03em;font-weight:600"><span>Estructura</span><span>Hallazgo</span></div>
+                  <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-top:1px solid var(--bd2)"><span style="font-size:13.5px">Paravertebrales L3–L5 derechos</span><span style="font-size:12.5px;font-weight:600;color:var(--bd0);background:#FEF2F2;border-radius:6px;padding:3px 10px">Hipertonía + dolor</span></div>
+                  <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-top:1px solid var(--bd2)"><span style="font-size:13.5px">Cuadrado lumbar derecho</span><span style="font-size:12.5px;font-weight:600;color:#B45309;background:#FFFBEB;border-radius:6px;padding:3px 10px">Punto gatillo activo</span></div>
+                  <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-top:1px solid var(--bd2)"><span style="font-size:13.5px">Glúteo medio derecho</span><span style="font-size:12.5px;font-weight:600;color:#B45309;background:#FFFBEB;border-radius:6px;padding:3px 10px">Dolor a la presión</span></div>
+                  <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-top:1px solid var(--bd2)"><span style="font-size:13.5px">Articulación sacroilíaca derecha</span><span style="font-size:12.5px;font-weight:600;color:var(--ok);background:#F0FDF4;border-radius:6px;padding:3px 10px">Sin dolor</span></div>
+                  <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-top:1px solid var(--bd2)"><span style="font-size:13.5px">Apófisis espinosas L1–S1</span><span style="font-size:12.5px;font-weight:600;color:var(--ok);background:#F0FDF4;border-radius:6px;padding:3px 10px">Sin dolor</span></div>
+                </div>
+                <div style="font-size:12.5px;font-weight:600;color:var(--t2);margin-bottom:7px">Notas</div>
+                <textarea rows="4">Temperatura y coloración normales. Sin edema. La presión sostenida sobre el cuadrado lumbar derecho reproduce el dolor referido hacia el glúteo.</textarea>
+              </div>
+            </div>
+
+            <div data-panel="pru" hidden>
+              <div>
+                <h4 style="font-size:14px;margin-bottom:3px">Pruebas especiales — columna lumbar</h4>
+                <div style="font-size:12.5px;color:var(--t2);margin-bottom:16px">Marque el resultado de cada prueba aplicada.</div>
+                <div style="display:flex;flex-direction:column;gap:9px">
+                  <div style="display:flex;align-items:center;justify-content:space-between;border:1px solid var(--bd);border-radius:10px;padding:12px 14px">
+                    <div><div style="font-size:13.5px;font-weight:500">Lasègue (elevación pierna recta)</div><div style="font-size:11.5px;color:var(--t3)">Radiculopatía lumbar</div></div>
+                    <div style="display:flex;gap:6px"><span style="font-size:12.5px;font-weight:600;color:var(--t2);border:1px solid var(--bd);border-radius:7px;padding:5px 13px">Positiva</span><span style="font-size:12.5px;font-weight:600;color:#fff;background:var(--ok);border-radius:7px;padding:5px 13px">Negativa</span></div>
+                  </div>
+                  <div style="display:flex;align-items:center;justify-content:space-between;border:1px solid var(--bd);border-radius:10px;padding:12px 14px">
+                    <div><div style="font-size:13.5px;font-weight:500">Slump test</div><div style="font-size:11.5px;color:var(--t3)">Tensión neural</div></div>
+                    <div style="display:flex;gap:6px"><span style="font-size:12.5px;font-weight:600;color:var(--t2);border:1px solid var(--bd);border-radius:7px;padding:5px 13px">Positiva</span><span style="font-size:12.5px;font-weight:600;color:#fff;background:var(--ok);border-radius:7px;padding:5px 13px">Negativa</span></div>
+                  </div>
+                  <div style="display:flex;align-items:center;justify-content:space-between;border:1px solid var(--bd);border-radius:10px;padding:12px 14px;background:#FFFBF7;border-color:#FFD5BE">
+                    <div><div style="font-size:13.5px;font-weight:500">Prueba de Trendelenburg</div><div style="font-size:11.5px;color:var(--t3)">Insuficiencia de glúteo medio</div></div>
+                    <div style="display:flex;gap:6px"><span style="font-size:12.5px;font-weight:600;color:#fff;background:var(--bd0);border-radius:7px;padding:5px 13px">Positiva</span><span style="font-size:12.5px;font-weight:600;color:var(--t2);border:1px solid var(--bd);border-radius:7px;padding:5px 13px">Negativa</span></div>
+                  </div>
+                  <div style="display:flex;align-items:center;justify-content:space-between;border:1px solid var(--bd);border-radius:10px;padding:12px 14px">
+                    <div><div style="font-size:13.5px;font-weight:500">Test de Schober modificado</div><div style="font-size:11.5px;color:var(--t3)">Movilidad lumbar en flexión</div></div>
+                    <div style="display:flex;align-items:center;gap:8px"><span class="n" style="font-size:13px;background:#FFFBEB;color:#B45309;border-radius:7px;padding:5px 12px">3.2 cm</span><span style="font-size:11.5px;color:var(--t3)">normal ≥ 5 cm</span></div>
+                  </div>
+                  <div style="display:flex;align-items:center;justify-content:center;border:1px dashed var(--bd);border-radius:10px;padding:12px;color:var(--p);font-size:12.5px;font-weight:600">+ Agregar prueba del catálogo</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div style="border-top:1px solid var(--bd);background:var(--bg);padding:11px 20px;display:flex;align-items:center;gap:22px">
+            <span style="font-size:11.5px;color:var(--t3);text-transform:uppercase;letter-spacing:.04em;font-weight:600">Línea base capturada</span>
+            <div style="display:flex;gap:18px;flex:1">
+              <div><div style="font-size:11px;color:var(--t3)">Dolor mov.</div><div class="n" style="font-size:15px"><span id="foot-eva">7</span><span style="font-size:11px;color:var(--t3);font-weight:400">/10</span></div></div>
+              <div><div style="font-size:11px;color:var(--t3)">Flexión lumbar</div><div class="n" style="font-size:15px">45°</div></div>
+              <div><div style="font-size:11px;color:var(--t3)">Glúteo medio</div><div class="n" style="font-size:15px">3<span style="font-size:11px;color:var(--t3);font-weight:400">/5</span></div></div>
+              <div><div style="font-size:11px;color:var(--t3)">PSFS</div><div class="n" style="font-size:15px"><span id="foot-psfs">3.0</span><span style="font-size:11px;color:var(--t3);font-weight:400">/10</span></div></div>
+            </div>
+            <span style="font-size:12px;color:var(--t2);border:1px solid var(--bd);background:var(--sf);border-radius:8px;padding:8px 14px;font-weight:500">← Anterior</span>
+            <span style="font-size:13px;color:#fff;background:var(--p);border-radius:8px;padding:9px 17px;font-weight:600">Siguiente: Diagnóstico y plan →</span>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+</div>
+
+
+<script>
+(function () {
+  var panels = document.querySelectorAll('[data-panel]');
+  var tabs = document.querySelectorAll('[data-tab]');
+  function paint(btn, on) {
+    btn.style.fontWeight = on ? '700' : '500';
+    btn.style.color = on ? '#0E7C6B' : '#57534E';
+    btn.style.background = on ? '#ECFDF5' : 'transparent';
+    btn.style.borderBottom = '2px solid ' + (on ? '#0E7C6B' : 'transparent');
+  }
+  tabs.forEach(function (t) {
+    t.style.cursor = 'pointer';
+    t.addEventListener('click', function () {
+      tabs.forEach(function (o) { paint(o, o === t); });
+      panels.forEach(function (p) { p.hidden = p.dataset.panel !== t.dataset.tab; });
+    });
+  });
+
+  function badge(input) {
+    var box = input.parentElement;
+    for (var i = 0; i < 3 && box; i++) {
+      var b = box.querySelector('span.n');
+      if (b) return b;
+      box = box.parentElement;
+    }
+    return null;
+  }
+  var psfs = { 'psfs-1': 4, 'psfs-2': 2, 'psfs-3': 3 };
+  function refreshPsfs() {
+    var avg = (psfs['psfs-1'] + psfs['psfs-2'] + psfs['psfs-3']) / 3;
+    var t = avg.toFixed(1);
+    var a = document.getElementById('psfs-prom');
+    if (a) a.firstChild.nodeValue = t + ' ';
+    var f = document.getElementById('foot-psfs');
+    if (f) f.textContent = t;
+  }
+  document.querySelectorAll('input[type=range]').forEach(function (inp) {
+    var out = badge(inp);
+    inp.addEventListener('input', function () {
+      var v = Number(inp.value);
+      if (out) out.textContent = String(v);
+      if (inp.dataset.role === 'eva-mov') {
+        var f = document.getElementById('foot-eva');
+        if (f) f.textContent = String(v);
+      }
+      if (psfs.hasOwnProperty(inp.dataset.role)) { psfs[inp.dataset.role] = v; refreshPsfs(); }
+    });
+  });
+
+  var mmt = document.querySelectorAll('[data-panel="fza"] button');
+  mmt.forEach(function (b) {
+    b.style.cursor = 'pointer';
+    b.addEventListener('click', function () {
+      mmt.forEach(function (o) {
+        var on = o === b;
+        o.style.background = on ? '#0E7C6B' : '#FFFFFF';
+        o.style.borderColor = on ? '#0E7C6B' : '#E7E5E4';
+        o.style.color = on ? '#FFFFFF' : '#57534E';
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

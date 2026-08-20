@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Demo — Sistema FisioEnergy</title>
+<meta name="theme-color" content="#0101A7">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+  :root{--brand:#015AFC;--brand-medium:#012FD3;--brand-dark:#0101A7;--brand-200:#ADDFF7;--brand-300:#7BCAF1;
+    --ink:#1A1C1F;--ink-soft:#3F4145;--ink-muted:#6B6D71;--stage:#E7E5E4;
+    --ease-out:cubic-bezier(.23,1,.32,1)}
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:var(--stage);color:var(--ink);font-family:"Inter",system-ui,sans-serif;
+    display:flex;overflow:hidden;-webkit-font-smoothing:antialiased}
+  aside{width:296px;flex:0 0 296px;background:linear-gradient(168deg,#015AFC 0%,#012FD3 44%,#0101A7 100%);
+    color:#fff;display:flex;flex-direction:column;padding:26px 0 18px}
+  .brandbox{padding:0 24px 22px;border-bottom:1px solid rgba(255,255,255,.18)}
+  .navlist{flex:1;overflow-y:auto;padding:14px 12px;display:flex;flex-direction:column;gap:2px}
+  .nav{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;font:inherit;cursor:pointer;
+    background:transparent;border:0;border-radius:10px;padding:10px 12px;color:rgba(255,255,255,.76);
+    transition:background-color .16s var(--ease-out),color .16s var(--ease-out)}
+  .nav:hover{background:rgba(255,255,255,.09);color:#fff}
+  .nav[aria-current="true"]{background:rgba(255,255,255,.16);color:#fff;font-weight:600}
+  .nav:focus-visible{outline:2px solid #fff;outline-offset:-2px}
+  .nnum{font-variant-numeric:tabular-nums;font-size:11.5px;font-weight:700;opacity:.6;padding-top:2px;flex:0 0 20px}
+  .ntext{font-size:14px;line-height:1.35}
+  main{flex:1;min-width:0;display:flex;flex-direction:column}
+  .bar{background:#fff;border-bottom:1px solid #D6D3D1;padding:14px 26px;display:flex;align-items:center;gap:24px;flex:0 0 auto}
+  .bar h1{margin:0;font-size:17px;font-weight:800;letter-spacing:-.02em}
+  .bar p{margin:3px 0 0;font-size:13px;color:var(--ink-muted);max-width:74ch}
+  .ghost{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--brand);
+    border:1px solid var(--brand-200);border-radius:9999px;padding:9px 16px;text-decoration:none;white-space:nowrap;
+    transition:background-color .16s var(--ease-out),transform .12s var(--ease-out)}
+  .ghost:hover{background:#EFF8FE}
+  .ghost:active{transform:scale(.97)}
+  .stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:28px;overflow:auto}
+  .holder{position:relative;background:#fff;box-shadow:0 10px 40px rgba(28,25,23,.2);border-radius:6px;overflow:hidden}
+  iframe{border:0;display:block;transform-origin:top left}
+  .foot{flex:0 0 auto;background:#fff;border-top:1px solid #D6D3D1;padding:9px 26px;display:flex;
+    align-items:center;gap:18px;font-size:12.5px;color:var(--ink-muted)}
+  kbd{font:inherit;font-size:11px;background:#F5F7FA;border:1px solid #D1D1D1;border-bottom-width:2px;
+    border-radius:5px;padding:1px 6px;color:var(--ink-soft)}
+  .live{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:var(--brand);
+    background:#EFF8FE;border:1px solid var(--brand-200);border-radius:9999px;padding:4px 12px}
+  .toosmall{display:none}
+  @media (max-width:900px){
+    body{display:block;overflow:auto}
+    aside,main{display:none}
+    .toosmall{display:block;padding:48px 24px;text-align:center;font-size:16px;color:var(--ink-soft)}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+
+<div class="toosmall">
+  <p style="font-weight:700;color:var(--ink);font-size:18px">Esta demo está hecha para verse en computadora.</p>
+  <p>Las pantallas del sistema miden 1440&nbsp;px de ancho. Ábrala desde una laptop o un monitor para verlas completas.</p>
+</div>
+
+<aside>
+  <div class="brandbox">
+    <img src="data:image/png;base64,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" alt="Servicios Digitales" style="height:26px;width:auto;filter:brightness(0) invert(1)">
+    <div style="margin-top:18px;font-size:19px;font-weight:800;letter-spacing:-.03em">Demo · FisioEnergy</div>
+    <div style="margin-top:5px;font-size:13px;color:rgba(255,255,255,.7);line-height:1.45">Once pantallas del sistema, con datos de ejemplo.</div>
+  </div>
+  <nav class="navlist">
+      <button class="nav" data-i="0">
+        <span class="nnum">01</span>
+        <span class="ntext">Pantalla de ingreso</span>
+      </button>
+      <button class="nav" data-i="1">
+        <span class="nnum">02</span>
+        <span class="ntext">Inicio — panel del día</span>
+      </button>
+      <button class="nav" data-i="2">
+        <span class="nnum">03</span>
+        <span class="ntext">Lista de pacientes</span>
+      </button>
+      <button class="nav" data-i="3">
+        <span class="nnum">04</span>
+        <span class="ntext">Evaluación · paso 1: datos personales</span>
+      </button>
+      <button class="nav" data-i="4">
+        <span class="nnum">05</span>
+        <span class="ntext">Evaluación · historial y banderas rojas</span>
+      </button>
+      <button class="nav" data-i="5">
+        <span class="nnum">06</span>
+        <span class="ntext">Evaluación fisioterapéutica <span style="color:#7BCAF1;font-size:11px;font-weight:700">interactiva</span></span>
+      </button>
+      <button class="nav" data-i="6">
+        <span class="nnum">07</span>
+        <span class="ntext">Nota de sesión (teléfono) <span style="color:#7BCAF1;font-size:11px;font-weight:700">interactiva</span></span>
+      </button>
+      <button class="nav" data-i="7">
+        <span class="nnum">08</span>
+        <span class="ntext">Progreso del paciente</span>
+      </button>
+      <button class="nav" data-i="8">
+        <span class="nnum">09</span>
+        <span class="ntext">Agenda + Google Calendar</span>
+      </button>
+      <button class="nav" data-i="9">
+        <span class="nnum">10</span>
+        <span class="ntext">Reporte de alta en PDF</span>
+      </button>
+      <button class="nav" data-i="10">
+        <span class="nnum">11</span>
+        <span class="ntext">Sistema de diseño</span>
+      </button>
+  </nav>
+  <div style="padding:14px 24px 0;border-top:1px solid rgba(255,255,255,.18);font-size:12px;color:rgba(255,255,255,.6);line-height:1.5">
+    Propuesta 1 de 2 · <a href="../" style="color:rgba(255,255,255,.85)">volver a la propuesta</a>
+  </div>
+</aside>
+
+<main>
+  <div class="bar">
+    <div style="flex:1;min-width:0">
+      <h1 id="ttl"></h1>
+      <p id="dsc"></p>
+    </div>
+    <span class="live" id="livetag" hidden>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      Se puede usar
+    </span>
+    <a class="ghost" id="newtab" href="#" target="_blank" rel="noopener">
+      Abrir sola
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+    </a>
+  </div>
+
+  <div class="stage" id="stage">
+    <div class="holder" id="holder"><iframe id="frame" title="Pantalla del sistema"></iframe></div>
+  </div>
+
+  <div class="foot">
+    <span><kbd>&larr;</kbd> <kbd>&rarr;</kbd> para moverse entre pantallas</span>
+    <span id="dims" style="font-variant-numeric:tabular-nums"></span>
+    <span style="margin-left:auto">Servicios Digitales · Guatemala</span>
+  </div>
+</main>
+
+<script>
+var S = [{"id": "ingreso", "t": "Pantalla de ingreso", "d": "Acceso de la clínica. Hasta 3 usuarios con roles: la recepción no ve el contenido clínico.", "w": 1440, "h": 1024, "live": false}, {"id": "inicio", "t": "Inicio — panel del día", "d": "Lo primero que ve al abrir: citas de hoy con su estado, pacientes que requieren atención y el estado de la sincronización con Google Calendar.", "w": 1440, "h": 1024, "live": false}, {"id": "pacientes", "t": "Lista de pacientes", "d": "Búsqueda por nombre, DPI o teléfono. La columna de dolor muestra el valor actual y la tendencia contra la línea base.", "w": 1440, "h": 1024, "live": false}, {"id": "datos-personales", "t": "Evaluación · paso 1: datos personales", "d": "Primer paso del asistente. Guardado automático: puede salir y retomar donde quedó.", "w": 1440, "h": 1120, "live": false}, {"id": "historial", "t": "Evaluación · historial y banderas rojas", "d": "Antecedentes, medicamentos y hábitos. El screening de banderas rojas avisa cuándo hay que derivar a médico antes de tratar.", "w": 1440, "h": 1180, "live": false}, {"id": "evaluacion", "t": "Evaluación fisioterapéutica", "d": "El corazón del sistema. Mapa del dolor, escala EVA, goniometría, fuerza Daniels, pruebas especiales y PSFS. Todo queda como línea base.", "w": 1440, "h": 1024, "live": true}, {"id": "sesion", "t": "Nota de sesión (teléfono)", "d": "Para llenar junto a la camilla en menos de 90 segundos. Siempre muestra el valor anterior y el basal sobre el mismo control.", "w": 390, "h": 1000, "live": true}, {"id": "progreso", "t": "Progreso del paciente", "d": "La pantalla que se le muestra al paciente girando la tablet: línea base contra hoy contra la meta.", "w": 1440, "h": 1160, "live": false}, {"id": "agenda", "t": "Agenda + Google Calendar", "d": "Vista semanal. Cada cita se crea en el calendario “FisioEnergy — Citas” con recordatorios a 24 h y 1 h, más el aviso por WhatsApp.", "w": 1440, "h": 1024, "live": false}, {"id": "reporte", "t": "Reporte de alta en PDF", "d": "El entregable final: comparativo inicial contra alta, objetivos alcanzados y programa domiciliario, con su membrete y su número de colegiada.", "w": 1440, "h": 1240, "live": false}, {"id": "sistema", "t": "Sistema de diseño", "d": "Los componentes que se repiten en todas las pantallas: color, tipografía, botones, controles clínicos.", "w": 1440, "h": 1120, "live": false}];
+var frame = document.getElementById('frame'), holder = document.getElementById('holder'),
+    stage = document.getElementById('stage'), navs = document.querySelectorAll('.nav'), cur = 0;
+
+function scale() {
+  var s = S[cur];
+  var aw = stage.clientWidth - 56, ah = stage.clientHeight - 56;
+  var k = Math.min(1, aw / s.w, ah / s.h);
+  frame.style.width = s.w + 'px';
+  frame.style.height = s.h + 'px';
+  frame.style.transform = 'scale(' + k + ')';
+  holder.style.width = Math.round(s.w * k) + 'px';
+  holder.style.height = Math.round(s.h * k) + 'px';
+  document.getElementById('dims').textContent = s.w + ' × ' + s.h + ' px · ' + Math.round(k * 100) + '%';
+}
+
+function show(i, push) {
+  cur = Math.max(0, Math.min(S.length - 1, i));
+  var s = S[cur];
+  frame.src = 'pantallas/' + s.id + '.html';
+  document.getElementById('ttl').textContent = s.t;
+  document.getElementById('dsc').textContent = s.d;
+  document.getElementById('newtab').href = 'pantallas/' + s.id + '.html';
+  document.getElementById('livetag').hidden = !s.live;
+  navs.forEach(function (n, j) { n.setAttribute('aria-current', j === cur ? 'true' : 'false'); });
+  scale();
+  if (push !== false) history.replaceState(null, '', '#' + s.id);
+}
+
+navs.forEach(function (n) { n.addEventListener('click', function () { show(+n.dataset.i); }); });
+window.addEventListener('resize', scale);
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'ArrowRight') show(cur + 1);
+  if (e.key === 'ArrowLeft') show(cur - 1);
+});
+
+var start = S.findIndex(function (s) { return '#' + s.id === location.hash; });
+show(start > -1 ? start : 0);
+</script>
+</body>
+</html>
