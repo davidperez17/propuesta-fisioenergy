@@ -117,6 +117,30 @@
     .lede{font-size:15.5px}
   }
 
+  @media (max-width:680px){
+    .tablewrap{overflow:visible; border:0; border-radius:0; box-shadow:none}
+    .tablewrap table{min-width:0; background:transparent}
+    .tablewrap thead{display:none}
+    .tablewrap tbody{display:flex; flex-direction:column; gap:12px}
+    .tablewrap tr{
+      display:block; background:#fff; border:1px solid #E8ECF2; border-radius:var(--r-card);
+      box-shadow:var(--sh-card); padding:16px 18px;
+    }
+    .tablewrap td{display:block; border:0; padding:0; font-size:15px}
+    .tablewrap td + td{margin-top:12px}
+    .tablewrap td[data-label]::before{
+      content:attr(data-label); display:block; font-size:11px; font-weight:700;
+      letter-spacing:.07em; text-transform:uppercase; color:var(--ink-muted); margin-bottom:3px;
+    }
+    .crono td:first-child{
+      font-size:12px; font-weight:800; letter-spacing:.07em; text-transform:uppercase;
+      color:var(--brand); margin-bottom:2px;
+    }
+    .crono td:first-child::before{content:"Semana "}
+    .crono td:nth-child(2){margin-top:0}
+    .pagos td:first-child{font-size:16px; font-weight:800; letter-spacing:-.01em}
+  }
+
   @media (prefers-reduced-motion:reduce){
     *{transition-duration:.01ms !important; animation-duration:.01ms !important}
     .card:hover,.pill:active{transform:none}
@@ -308,16 +332,16 @@
     <h2 class="h2" style="margin-top:16px">Seis semanas, con entrega revisable cada viernes</h2>
     <p class="lede">No hay cajas negras de un mes. Cada semana hay algo que aprobar.</p>
 
-    <div class="tablewrap" style="margin-top:28px">
+    <div class="tablewrap crono" style="margin-top:28px">
       <table>
         <thead><tr><th style="width:96px">Semana</th><th>Entrega</th><th style="width:230px">Qué se aprueba</th></tr></thead>
         <tbody>
-          <tr><td class="num" style="font-weight:800; color:var(--brand)">1</td><td>Reunión inicial, revisión de su hoja de evaluación actual, brief y <strong>demo de diseño</strong></td><td style="color:var(--ink-muted)">Diseño y alcance</td></tr>
-          <tr><td class="num" style="font-weight:800; color:var(--brand)">2</td><td>Base de datos, ingreso al sistema, usuarios y módulo de Pacientes</td><td style="color:var(--ink-muted)">Datos y accesos</td></tr>
-          <tr><td class="num" style="font-weight:800; color:var(--brand)">3</td><td>Asistente de evaluación inicial completo</td><td style="color:var(--ink-muted)">El formato de evaluación</td></tr>
-          <tr><td class="num" style="font-weight:800; color:var(--brand)">4</td><td>Notas de sesión SOAP y gráficas de progreso</td><td style="color:var(--ink-muted)">La progresividad</td></tr>
-          <tr><td class="num" style="font-weight:800; color:var(--brand)">5</td><td>Agenda, integración con Google Calendar y recordatorio por WhatsApp</td><td style="color:var(--ink-muted)">La sincronización</td></tr>
-          <tr><td class="num" style="font-weight:800; color:var(--brand)">6</td><td>Reportes PDF, pruebas, <strong>capacitación</strong> y puesta en marcha</td><td style="color:var(--ink-muted)">Entrega final</td></tr>
+          <tr><td class="num" style="font-weight:800; color:var(--brand)">1</td><td>Reunión inicial, revisión de su hoja de evaluación actual, brief y <strong>demo de diseño</strong></td><td data-label="Qué se aprueba" style="color:var(--ink-muted)">Diseño y alcance</td></tr>
+          <tr><td class="num" style="font-weight:800; color:var(--brand)">2</td><td>Base de datos, ingreso al sistema, usuarios y módulo de Pacientes</td><td data-label="Qué se aprueba" style="color:var(--ink-muted)">Datos y accesos</td></tr>
+          <tr><td class="num" style="font-weight:800; color:var(--brand)">3</td><td>Asistente de evaluación inicial completo</td><td data-label="Qué se aprueba" style="color:var(--ink-muted)">El formato de evaluación</td></tr>
+          <tr><td class="num" style="font-weight:800; color:var(--brand)">4</td><td>Notas de sesión SOAP y gráficas de progreso</td><td data-label="Qué se aprueba" style="color:var(--ink-muted)">La progresividad</td></tr>
+          <tr><td class="num" style="font-weight:800; color:var(--brand)">5</td><td>Agenda, integración con Google Calendar y recordatorio por WhatsApp</td><td data-label="Qué se aprueba" style="color:var(--ink-muted)">La sincronización</td></tr>
+          <tr><td class="num" style="font-weight:800; color:var(--brand)">6</td><td>Reportes PDF, pruebas, <strong>capacitación</strong> y puesta en marcha</td><td data-label="Qué se aprueba" style="color:var(--ink-muted)">Entrega final</td></tr>
         </tbody>
       </table>
     </div>
@@ -389,15 +413,15 @@
     </div>
 
     <h3 style="font-size:18px; font-weight:800; margin-top:44px">Formas de pago</h3>
-    <div class="tablewrap" style="margin-top:16px">
+    <div class="tablewrap pagos" style="margin-top:16px">
       <table>
         <thead><tr><th></th><th>Opción A — 12 meses</th><th>Opción B — Contado</th></tr></thead>
         <tbody>
-          <tr><td style="font-weight:600">Estructura</td><td>12 cuotas mensuales fijas</td><td>50% al firmar · 50% contra entrega</td></tr>
-          <tr><td style="font-weight:600">Al firmar</td><td class="num">Q 450.00</td><td class="num">Q 2,700.00</td></tr>
-          <tr><td style="font-weight:600">Resto</td><td class="num">11 cuotas de Q 450.00</td><td class="num">1 pago final de Q 2,700.00</td></tr>
-          <tr><td style="font-weight:600">Total del primer año</td><td class="num" style="font-weight:800; color:var(--brand)">Q 5,400.00</td><td class="num" style="font-weight:800; color:var(--brand)">Q 5,400.00</td></tr>
-          <tr><td style="font-weight:600">Intereses</td><td class="num" style="color:var(--green-700); font-weight:700">Q 0.00</td><td>—</td></tr>
+          <tr><td style="font-weight:600">Estructura</td><td data-label="Opción A — 12 meses">12 cuotas mensuales fijas</td><td data-label="Opción B — Contado">50% al firmar · 50% contra entrega</td></tr>
+          <tr><td style="font-weight:600">Al firmar</td><td data-label="Opción A — 12 meses" class="num">Q 450.00</td><td data-label="Opción B — Contado" class="num">Q 2,700.00</td></tr>
+          <tr><td style="font-weight:600">Resto</td><td data-label="Opción A — 12 meses" class="num">11 cuotas de Q 450.00</td><td data-label="Opción B — Contado" class="num">1 pago final de Q 2,700.00</td></tr>
+          <tr><td style="font-weight:600">Total del primer año</td><td data-label="Opción A — 12 meses" class="num" style="font-weight:800; color:var(--brand)">Q 5,400.00</td><td data-label="Opción B — Contado" class="num" style="font-weight:800; color:var(--brand)">Q 5,400.00</td></tr>
+          <tr><td style="font-weight:600">Intereses</td><td data-label="Opción A — 12 meses" class="num" style="color:var(--green-700); font-weight:700">Q 0.00</td><td data-label="Opción B — Contado">—</td></tr>
         </tbody>
       </table>
     </div>
