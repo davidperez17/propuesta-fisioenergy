@@ -3,7 +3,7 @@
 Propuesta comercial para **FisioEnergy** (Guatemala): sistema de expediente clínico con
 evaluación fisioterapéutica progresiva y agenda sincronizada con Google Calendar.
 
-**Propuesta 1 de 2 · Sistema base (MVP)** · Presentada el 20 de agosto de 2026.
+**Sistema a la medida (MVP)** · Presentada el 20 de agosto de 2026.
 
 ## Ver la propuesta
 
