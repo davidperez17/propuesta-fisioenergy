@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="description" content="Propuesta de Servicios Digitales para el sistema FisioEnergy: expediente clinico con evaluacion fisioterapeutica progresiva y agenda sincronizada con Google Calendar.">
+<meta name="theme-color" content="#015AFC">
+<meta property="og:title" content="Propuesta FisioEnergy — Servicios Digitales">
+<meta property="og:description" content="Expediente clinico con evaluacion fisioterapeutica progresiva y agenda sincronizada con Google Calendar.">
+<meta property="og:type" content="website">
+<title>Propuesta FisioEnergy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+  :root{
+    --brand-light:#0098DB; --brand:#015AFC; --brand-medium:#012FD3; --brand-dark:#0101A7;
+    --brand-50:#EFF8FE; --brand-100:#D6EFFB; --brand-200:#ADDFF7; --brand-300:#7BCAF1; --brand-400:#3FB0E8;
+    --ink:#1A1C1F; --ink-soft:#3F4145; --ink-muted:#6B6D71;
+    --line:#D1D1D1; --surface:#FFFFFF; --surface-alt:#F5F7FA;
+    --green-50:#F0FDF4; --green-300:#86EFAC; --green-700:#15803D;
+    --amber-50:#FFFBEB; --amber-300:#FCD34D; --amber-700:#B45309;
+    --orange-500:#F97316; --orange-50:#FFF7ED; --orange-300:#FDBA74; --orange-700:#C2410C;
+    --r-card:16px; --r-pill:9999px; --r-lg:12px;
+    --sh-card:0 4px 12px rgba(1,90,252,.08);
+    --sh-hover:0 8px 24px rgba(1,47,211,.22);
+    --ease-out:cubic-bezier(.23,1,.32,1);
+    --container:1180px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{
+    margin:0; background:var(--surface); color:var(--ink);
+    font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+    font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;
+    font-feature-settings:"cv11";
+  }
+  h1,h2,h3,h4{margin:0; line-height:1.15; letter-spacing:-.022em; text-wrap:balance}
+  p{margin:0}
+  a{color:var(--brand); text-decoration:none}
+  a:hover{color:var(--brand-medium)}
+  a:focus-visible,.pill:focus-visible{outline:none; box-shadow:0 0 0 3px var(--brand-100); border-radius:var(--r-pill)}
+  .num{font-variant-numeric:tabular-nums}
+  .wrap{max-width:var(--container); margin:0 auto; padding-inline:16px}
+  @media (min-width:640px){.wrap{padding-inline:24px}}
+  @media (min-width:1024px){.wrap{padding-inline:32px}}
+  section{padding-block:56px}
+  @media (min-width:640px){section{padding-block:76px}}
+  .alt{background:var(--surface-alt)}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:12px; font-weight:700; letter-spacing:.09em; text-transform:uppercase;
+    color:var(--brand); background:var(--brand-50); border:1px solid var(--brand-200);
+    border-radius:var(--r-pill); padding:5px 13px;
+  }
+  .h2{font-size:clamp(22px,2.6vw,28px); font-weight:800}
+  .lede{color:var(--ink-soft); font-size:clamp(15px,1.6vw,17px); max-width:62ch; margin-top:12px}
+  .card{
+    background:var(--surface); border:1px solid #E8ECF2; border-radius:var(--r-card);
+    box-shadow:var(--sh-card); padding:24px;
+    transition:transform .22s var(--ease-out), box-shadow .22s var(--ease-out);
+  }
+  .card:hover{transform:translateY(-1.5px); box-shadow:var(--sh-hover)}
+  .grid{display:grid; gap:16px}
+  @media (min-width:640px){.grid{gap:24px}}
+  .g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  @media (max-width:860px){.g3{grid-template-columns:1fr}}
+  @media (max-width:600px){.g2{grid-template-columns:1fr}}
+  .icon{width:20px;height:20px;flex:0 0 20px;stroke-width:1.75;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
+  .icon-sm{width:16px;height:16px;flex:0 0 16px;stroke-width:1.9;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
+  .pill{
+    display:inline-flex; align-items:center; gap:9px; border-radius:var(--r-pill);
+    font-weight:600; font-size:15px; padding:13px 24px; border:1px solid transparent;
+    transition:background-color .18s var(--ease-out), transform .12s var(--ease-out), box-shadow .18s var(--ease-out);
+  }
+  .pill:active{transform:scale(.97)}
+  .btn-primary{background:var(--brand); color:#fff; box-shadow:var(--sh-card)}
+  .btn-primary:hover{background:var(--brand-medium); color:#fff; box-shadow:var(--sh-hover)}
+  .btn-secondary{background:#fff; color:var(--brand); border-color:var(--brand-200)}
+  .btn-secondary:hover{background:var(--brand-50); color:var(--brand-medium)}
+  .btn-on-hero{background:#fff; color:var(--brand-medium)}
+  .btn-on-hero:hover{background:var(--brand-50); color:var(--brand-dark)}
+  .callout{
+    display:flex; gap:12px; align-items:flex-start;
+    background:var(--brand-50); border:1px solid var(--brand-200); border-radius:var(--r-lg);
+    padding:14px 16px; font-size:14.5px; color:var(--ink-soft);
+  }
+  .callout-amber{background:var(--amber-50); border-color:var(--amber-300); color:#78350F}
+  .tablewrap{overflow-x:auto; border-radius:var(--r-card); border:1px solid #E8ECF2; box-shadow:var(--sh-card)}
+  table{border-collapse:collapse; width:100%; min-width:520px; background:#fff}
+  th,td{text-align:left; padding:14px 18px; font-size:14.5px; border-bottom:1px solid #EEF1F6}
+  thead th{font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-muted); font-weight:700; background:var(--surface-alt)}
+  tbody tr:last-child td{border-bottom:0}
+  @media (prefers-reduced-motion:reduce){
+    *{transition-duration:.01ms !important; animation-duration:.01ms !important}
+    .card:hover,.pill:active{transform:none}
+  }
+  @media print{
+    body{font-size:11pt}
+    .noprint{display:none !important}
+    section{padding-block:18px; break-inside:avoid}
+    .card{box-shadow:none; border-color:#CBD5E1}
+    a{color:var(--ink)}
+  }
+</style>
+</head>
+<body>
+
+
+<header class="noprint" style="position:sticky; top:0; z-index:50; background:rgba(255,255,255,.92); backdrop-filter:blur(10px); border-bottom:1px solid #EEF1F6">
+  <div class="wrap" style="display:flex; align-items:center; gap:16px; height:64px">
+    <img src="data:image/png;base64,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" alt="Servicios Digitales" style="height:26px; width:auto">
+    <span style="width:1px; height:22px; background:var(--line)"></span>
+    <span style="font-size:13.5px; font-weight:600; color:var(--ink-muted)">Propuesta&nbsp;· FisioEnergy</span>
+    <a class="pill btn-primary" href="#inversion" style="margin-left:auto; font-size:14px; padding:10px 20px">Ver la inversión</a>
+  </div>
+</header>
+
+<div style="background:linear-gradient(158deg,#015AFC 0%,#012FD3 46%,#0101A7 100%); color:#fff; position:relative; overflow:hidden">
+  <div aria-hidden="true" style="position:absolute; inset:0; background:radial-gradient(120% 90% at 88% 8%, rgba(0,152,219,.42) 0%, rgba(0,152,219,0) 55%)"></div>
+  <div class="wrap" style="position:relative; padding-block:64px 72px">
+    <span class="eyebrow" style="color:#fff; background:rgba(255,255,255,.14); border-color:rgba(255,255,255,.28)">Propuesta 1 de 2 · Sistema base</span>
+    <h1 style="font-size:clamp(34px,5.6vw,58px); font-weight:800; margin-top:20px; max-width:16ch; letter-spacing:-.032em">Sistema FisioEnergy</h1>
+    <p style="font-size:clamp(17px,2.1vw,21px); color:rgba(255,255,255,.86); margin-top:18px; max-width:46ch; line-height:1.45">Expediente clínico con evaluación fisioterapéutica progresiva y agenda sincronizada con Google&nbsp;Calendar.</p>
+
+    <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:34px">
+      <a class="pill btn-on-hero noprint" href="https://claude.ai/code/artifact/dbd184ee-b7b8-4d8a-8ba8-e2cc50ec4612" target="_blank" rel="noopener">
+        <svg class="icon" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        Ver la demo del sistema
+      </a>
+      <a class="pill noprint" href="#inversion" style="background:rgba(255,255,255,.12); color:#fff; border-color:rgba(255,255,255,.3)">Ir a la inversión</a>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; gap:14px 40px; margin-top:44px; padding-top:26px; border-top:1px solid rgba(255,255,255,.2)">
+      <div><div style="font-size:11.5px; letter-spacing:.09em; text-transform:uppercase; color:rgba(255,255,255,.6); font-weight:700">Preparada para</div><div style="font-weight:600; margin-top:3px">FisioEnergy · Guatemala</div></div>
+      <div><div style="font-size:11.5px; letter-spacing:.09em; text-transform:uppercase; color:rgba(255,255,255,.6); font-weight:700">Fecha</div><div class="num" style="font-weight:600; margin-top:3px">20 de agosto de 2026</div></div>
+      <div><div style="font-size:11.5px; letter-spacing:.09em; text-transform:uppercase; color:rgba(255,255,255,.6); font-weight:700">Vigencia</div><div style="font-weight:600; margin-top:3px">15 días</div></div>
+      <div><div style="font-size:11.5px; letter-spacing:.09em; text-transform:uppercase; color:rgba(255,255,255,.6); font-weight:700">Entrega</div><div style="font-weight:600; margin-top:3px">6 semanas</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Lo que entendimos</span>
+    <h2 class="h2" style="margin-top:16px">Atender ya lo hace bien. Lo que falta es demostrarlo.</h2>
+    <p class="lede">Hoy la evaluación de cada paciente vive en papel o en un archivo suelto. Sirve para atender, pero no para <strong>demostrar el avance</strong>.</p>
+
+    <div class="grid g2" style="margin-top:32px">
+      <div class="card">
+        <div style="display:flex; align-items:center; gap:11px; color:var(--brand)">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+          <h3 style="font-size:17px; font-weight:700; color:var(--ink)">No hay evidencia del progreso</h3>
+        </div>
+        <p style="margin-top:12px; color:var(--ink-soft); font-size:15px">Cuando un paciente pregunta <em>“¿de verdad estoy mejorando?”</em>, o cuando hay que justificar un paquete de 10 sesiones, no hay nada a la mano: solo memoria y criterio profesional. Comparar la sesión 1 con la sesión 8 es imposible.</p>
+      </div>
+      <div class="card">
+        <div style="display:flex; align-items:center; gap:11px; color:var(--brand)">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <h3 style="font-size:17px; font-weight:700; color:var(--ink)">Las citas viven fuera de un sistema</h3>
+        </div>
+        <p style="margin-top:12px; color:var(--ink-soft); font-size:15px">Sin recordatorio automático, cada inasistencia es una hora de camilla que no se recupera. Y la agenda en la cabeza o en WhatsApp deja espacio para dobles reservas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <span class="eyebrow">La solución</span>
+    <h2 class="h2" style="margin-top:16px">Una evaluación que se construye por capas</h2>
+    <p class="lede">El corazón del sistema. Todo lo demás — expediente, agenda, reportes — existe para sostener esto.</p>
+
+    <div class="grid" style="grid-template-columns:repeat(4,minmax(0,1fr)); margin-top:34px">
+      <div class="card" style="background:#fff">
+        <div class="num" style="font-size:12px; font-weight:800; color:var(--brand); letter-spacing:.08em">PASO 1</div>
+        <h3 style="font-size:16px; font-weight:700; margin-top:10px">Evaluación inicial</h3>
+        <p style="margin-top:8px; font-size:14.5px; color:var(--ink-soft)">Crea la <strong>línea base</strong>: dolor, rangos articulares, fuerza y función.</p>
+      </div>
+      <div class="card" style="background:#fff">
+        <div class="num" style="font-size:12px; font-weight:800; color:var(--brand); letter-spacing:.08em">PASO 2</div>
+        <h3 style="font-size:16px; font-weight:700; margin-top:10px">Cada sesión</h3>
+        <p style="margin-top:8px; font-size:14.5px; color:var(--ink-soft)">Re-mide un subconjunto de esos valores en <strong>menos de 90 segundos</strong>.</p>
+      </div>
+      <div class="card" style="background:#fff">
+        <div class="num" style="font-size:12px; font-weight:800; color:var(--brand); letter-spacing:.08em">PASO 3</div>
+        <h3 style="font-size:16px; font-weight:700; margin-top:10px">Cada 5 sesiones</h3>
+        <p style="margin-top:8px; font-size:14.5px; color:var(--ink-soft)">Re-evaluación formal completa. El sistema la sugiere solo.</p>
+      </div>
+      <div class="card" style="background:#fff">
+        <div class="num" style="font-size:12px; font-weight:800; color:var(--brand); letter-spacing:.08em">PASO 4</div>
+        <h3 style="font-size:16px; font-weight:700; margin-top:10px">Alta</h3>
+        <p style="margin-top:8px; font-size:14.5px; color:var(--ink-soft)">Reporte PDF con el <strong>comparativo inicial contra final</strong>.</p>
+      </div>
+    </div>
+    <style>@media (max-width:900px){.wrap .grid[style*="repeat(4"]{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (max-width:520px){.wrap .grid[style*="repeat(4"]{grid-template-columns:1fr}}</style>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="card" style="background:linear-gradient(158deg,#015AFC 0%,#012FD3 55%,#0101A7 100%); border:0; padding:36px; box-shadow:var(--sh-hover)">
+      <div style="display:flex; flex-wrap:wrap; gap:28px; align-items:center; justify-content:space-between">
+        <div style="flex:1; min-width:280px">
+          <span class="eyebrow" style="color:#fff; background:rgba(255,255,255,.14); border-color:rgba(255,255,255,.28)">Demo navegable</span>
+          <h2 class="h2" style="color:#fff; margin-top:16px">Vea el sistema antes de que exista</h2>
+          <p style="color:rgba(255,255,255,.85); margin-top:12px; font-size:16px; max-width:52ch">Once pantallas reales, no bocetos. Los deslizadores de dolor y las pestañas de la evaluación <strong style="color:#fff">funcionan de verdad</strong>: puede moverlos.</p>
+          <p style="color:rgba(255,255,255,.7); margin-top:14px; font-size:14px; max-width:52ch">Nada se programa hasta que usted apruebe este diseño. Si algo no le gusta, se cambia ahí — donde cambiar es barato.</p>
+        </div>
+        <a class="pill btn-on-hero noprint" href="https://claude.ai/code/artifact/dbd184ee-b7b8-4d8a-8ba8-e2cc50ec4612" target="_blank" rel="noopener" style="font-size:16px; padding:15px 28px">
+          Abrir la demo
+          <svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:28px; padding-top:24px; border-top:1px solid rgba(255,255,255,.2)">
+        <span style="font-size:13px; color:#fff; background:rgba(255,255,255,.14); border-radius:var(--r-pill); padding:6px 14px">Panel del día</span>
+        <span style="font-size:13px; color:#fff; background:rgba(255,255,255,.14); border-radius:var(--r-pill); padding:6px 14px">Lista de pacientes</span>
+        <span style="font-size:13px; color:#fff; background:rgba(255,255,255,.14); border-radius:var(--r-pill); padding:6px 14px">Datos personales</span>
+        <span style="font-size:13px; color:#fff; background:rgba(255,255,255,.14); border-radius:var(--r-pill); padding:6px 14px">Historial y banderas rojas</span>
+        <span style="font-size:13px; color:var(--brand-dark); background:#fff; font-weight:600; border-radius:var(--r-pill); padding:6px 14px">Evaluación fisioterapéutica</span>
+        <span style="font-size:13px; color:var(--brand-dark); background:#fff; font-weight:600; border-radius:var(--r-pill); padding:6px 14px">Progreso con gráficas</span>
+        <span style="font-size:13px; color:var(--brand-dark); background:#fff; font-weight:600; border-radius:var(--r-pill); padding:6px 14px">Sesión en el teléfono</span>
+        <span style="font-size:13px; color:#fff; background:rgba(255,255,255,.14); border-radius:var(--r-pill); padding:6px 14px">Agenda + Google Calendar</span>
+        <span style="font-size:13px; color:#fff; background:rgba(255,255,255,.14); border-radius:var(--r-pill); padding:6px 14px">Reporte de alta en PDF</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <span class="eyebrow">Alcance</span>
+    <h2 class="h2" style="margin-top:16px">Qué incluye el sistema</h2>
+    <p class="lede">Siete módulos. Esto es exactamente lo contratado — nada de sorpresas en ninguna dirección.</p>
+
+    <div class="grid g3" style="margin-top:32px">
+      <div class="card" style="background:#fff">
+        <div style="display:flex; align-items:center; gap:11px"><span style="color:var(--brand)"><svg class="icon" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg></span><h3 style="font-size:16.5px; font-weight:700">Pacientes</h3></div>
+        <p style="margin-top:11px; font-size:14.5px; color:var(--ink-soft)">Registro completo, búsqueda por nombre, DPI o teléfono. Ficha unificada con historial, contacto de emergencia, médico referente y archivos adjuntos (radiografías, resonancias, fotos de postura).</p>
+      </div>
+
+      <div class="card" style="background:#fff; border-color:var(--brand-200)">
+        <div style="display:flex; align-items:center; gap:11px"><span style="color:var(--brand)"><svg class="icon" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span><h3 style="font-size:16.5px; font-weight:700">Evaluación progresiva</h3><span style="margin-left:auto; font-size:10.5px; font-weight:800; letter-spacing:.07em; color:var(--brand); background:var(--brand-50); border:1px solid var(--brand-200); border-radius:var(--r-pill); padding:3px 9px">CLAVE</span></div>
+        <p style="margin-top:11px; font-size:14.5px; color:var(--ink-soft)">Asistente guiado en 8 pasos, con guardado automático y reanudable: datos personales · motivo de consulta · historial · banderas rojas · <strong>evaluación fisioterapéutica</strong> (mapa del dolor, escala EVA, goniometría, fuerza Daniels 0–5, pruebas especiales, PSFS) · diagnóstico, objetivos y plan · fecha de la próxima cita · consentimiento con firma en pantalla.</p>
+      </div>
+
+      <div class="card" style="background:#fff">
+        <div style="display:flex; align-items:center; gap:11px"><span style="color:var(--brand)"><svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg></span><h3 style="font-size:16.5px; font-weight:700">Notas de sesión (SOAP)</h3></div>
+        <p style="margin-top:11px; font-size:14.5px; color:var(--ink-soft)">Formulario optimizado para llenarse desde el teléfono junto a la camilla, en menos de 90 segundos. Siempre muestra el valor de la sesión anterior y el basal, para comparar sin salir de la pantalla.</p>
+      </div>
+
+      <div class="card" style="background:#fff; border-color:var(--brand-200)">
+        <div style="display:flex; align-items:center; gap:11px"><span style="color:var(--brand)"><svg class="icon" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span><h3 style="font-size:16.5px; font-weight:700">Progreso y evidencia</h3><span style="margin-left:auto; font-size:10.5px; font-weight:800; letter-spacing:.07em; color:var(--brand); background:var(--brand-50); border:1px solid var(--brand-200); border-radius:var(--r-pill); padding:3px 9px">CLAVE</span></div>
+        <p style="margin-top:11px; font-size:14.5px; color:var(--ink-soft)">Gráficas de evolución por métrica, comparativo basal → actual → meta, semáforo de cumplimiento de objetivos y línea de tiempo del tratamiento. <strong>Diseñada para girar la tablet y mostrársela al paciente.</strong></p>
+      </div>
+
+      <div class="card" style="background:#fff; border-color:var(--brand-200)">
+        <div style="display:flex; align-items:center; gap:11px"><span style="color:var(--brand)"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><h3 style="font-size:16.5px; font-weight:700">Agenda + Google Calendar</h3><span style="margin-left:auto; font-size:10.5px; font-weight:800; letter-spacing:.07em; color:var(--brand); background:var(--brand-50); border:1px solid var(--brand-200); border-radius:var(--r-pill); padding:3px 9px">CLAVE</span></div>
+        <p style="margin-top:11px; font-size:14.5px; color:var(--ink-soft)">Cada cita creada en el sistema aparece automáticamente en un calendario dedicado <strong>“FisioEnergy — Citas”</strong> de su cuenta de Google, con <strong>recordatorios a 24 horas y a 1 hora</strong>. Reprogramar o cancelar en el sistema mueve el evento en Google. Incluye control de asistencia y botón de recordatorio por WhatsApp con el mensaje ya escrito.</p>
+      </div>
+
+      <div class="card" style="background:#fff">
+        <div style="display:flex; align-items:center; gap:11px"><span style="color:var(--brand)"><svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5M12 15V3"/></svg></span><h3 style="font-size:16.5px; font-weight:700">Reportes en PDF</h3></div>
+        <p style="margin-top:11px; font-size:14.5px; color:var(--ink-soft)">Con su marca: hoja de evaluación inicial, reporte de progreso y <strong>reporte de alta con comparativo inicial contra final</strong>, listo para entregar al paciente o al médico referente.</p>
+      </div>
+
+      <div class="card" style="background:#fff">
+        <div style="display:flex; align-items:center; gap:11px"><span style="color:var(--brand)"><svg class="icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><h3 style="font-size:16.5px; font-weight:700">Usuarios y seguridad</h3></div>
+        <p style="margin-top:11px; font-size:14.5px; color:var(--ink-soft)">Hasta 3 usuarios con roles diferenciados — recepción no ve el contenido clínico. Acceso con contraseña, conexión cifrada, bitácora de accesos al expediente y respaldo diario automático.</p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:28px">
+      <span style="color:var(--brand); margin-top:1px"><svg class="icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+      <div><strong>Fuera de alcance en esta propuesta.</strong> Tienda en línea y venta de paquetes · pasarela de pagos · portal de autoservicio para el paciente · reserva de citas en línea · WhatsApp automatizado (API oficial) · facturación electrónica FEL/SAT · app móvil nativa · videollamada y telerehabilitación · biblioteca de ejercicios en video · múltiples sucursales · inventario · integración con aseguradoras. <em>Todo eso se cotiza en la Propuesta 2.</em></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Cronograma</span>
+    <h2 class="h2" style="margin-top:16px">Seis semanas, con entrega revisable cada viernes</h2>
+    <p class="lede">No hay cajas negras de un mes. Cada semana hay algo que aprobar.</p>
+
+    <div class="tablewrap" style="margin-top:28px">
+      <table>
+        <thead><tr><th style="width:96px">Semana</th><th>Entrega</th><th style="width:230px">Qué se aprueba</th></tr></thead>
+        <tbody>
+          <tr><td class="num" style="font-weight:800; color:var(--brand)">1</td><td>Reunión inicial, revisión de su hoja de evaluación actual, brief y <strong>demo de diseño</strong></td><td style="color:var(--ink-muted)">Diseño y alcance</td></tr>
+          <tr><td class="num" style="font-weight:800; color:var(--brand)">2</td><td>Base de datos, ingreso al sistema, usuarios y módulo de Pacientes</td><td style="color:var(--ink-muted)">Datos y accesos</td></tr>
+          <tr><td class="num" style="font-weight:800; color:var(--brand)">3</td><td>Asistente de evaluación inicial completo</td><td style="color:var(--ink-muted)">El formato de evaluación</td></tr>
+          <tr><td class="num" style="font-weight:800; color:var(--brand)">4</td><td>Notas de sesión SOAP y gráficas de progreso</td><td style="color:var(--ink-muted)">La progresividad</td></tr>
+          <tr><td class="num" style="font-weight:800; color:var(--brand)">5</td><td>Agenda, integración con Google Calendar y recordatorio por WhatsApp</td><td style="color:var(--ink-muted)">La sincronización</td></tr>
+          <tr><td class="num" style="font-weight:800; color:var(--brand)">6</td><td>Reportes PDF, pruebas, <strong>capacitación</strong> y puesta en marcha</td><td style="color:var(--ink-muted)">Entrega final</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="inversion">
+  <div class="wrap">
+    <span class="eyebrow">Inversión</span>
+    <h2 class="h2" style="margin-top:16px">Q&nbsp;450 al mes el primer año</h2>
+    <p class="lede">Construcción del sistema, puesta en marcha y 12 meses de soporte incluidos, sin intereses ni recargos. A partir del mes 13, el plan de servicio continúa en <strong>Q&nbsp;400 mensuales</strong>.</p>
+
+    <div class="grid g2" style="margin-top:32px; align-items:start">
+      <div class="card" style="background:#fff; border-color:var(--brand-200); border-width:2px">
+        <div style="display:flex; align-items:center; gap:10px">
+          <span class="eyebrow">Primer año</span>
+          <span style="font-size:11px; font-weight:800; letter-spacing:.07em; color:#fff; background:var(--orange-500); border-radius:var(--r-pill); padding:4px 11px">RECOMENDADO</span>
+        </div>
+        <div style="display:flex; align-items:baseline; gap:8px; margin-top:18px">
+          <span class="num" style="font-size:clamp(38px,5vw,50px); font-weight:800; color:var(--brand); letter-spacing:-.04em; line-height:1">Q&nbsp;450</span>
+          <span style="font-size:17px; color:var(--ink-muted); font-weight:600">/ mes</span>
+        </div>
+        <p class="num" style="margin-top:8px; font-size:14.5px; color:var(--ink-soft)">12 cuotas fijas · total <strong>Q&nbsp;5,400.00</strong></p>
+        <div style="height:1px; background:#EEF1F6; margin-block:20px"></div>
+        <ul style="margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:11px; font-size:14.5px; color:var(--ink-soft)">
+          <li style="display:flex; gap:10px"><span style="color:var(--green-700); margin-top:2px"><svg class="icon-sm" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span><strong>12 meses de soporte completo</strong>, sin límite de consultas</span></li>
+          <li style="display:flex; gap:10px"><span style="color:var(--green-700); margin-top:2px"><svg class="icon-sm" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Construcción completa de los 7 módulos</span></li>
+          <li style="display:flex; gap:10px"><span style="color:var(--green-700); margin-top:2px"><svg class="icon-sm" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Dominio propio, alojamiento, base de datos y HTTPS</span></li>
+          <li style="display:flex; gap:10px"><span style="color:var(--green-700); margin-top:2px"><svg class="icon-sm" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Respaldos diarios automáticos</span></li>
+          <li style="display:flex; gap:10px"><span style="color:var(--green-700); margin-top:2px"><svg class="icon-sm" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span><strong>30 días de garantía</strong> sobre errores de funcionamiento</span></li>
+          <li style="display:flex; gap:10px"><span style="color:var(--green-700); margin-top:2px"><svg class="icon-sm" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>2 sesiones de capacitación + videos por módulo</span></li>
+          <li style="display:flex; gap:10px"><span style="color:var(--green-700); margin-top:2px"><svg class="icon-sm" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Ajustes menores de textos, campos y formatos todo el año</span></li>
+        </ul>
+        <div class="callout" style="margin-top:20px">
+          <span style="color:var(--brand); margin-top:1px"><svg class="icon-sm" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+          <div><strong>Al completar los 12 pagos, el código y los datos son suyos:</strong> su marca, su formato de evaluación, su base de datos y su código fuente.</div>
+        </div>
+      </div>
+
+      <div class="card" style="background:#fff">
+        <span class="eyebrow">Año 2 en adelante · incluido en el contrato</span>
+        <div style="display:flex; align-items:baseline; gap:8px; margin-top:18px">
+          <span class="num" style="font-size:clamp(38px,5vw,50px); font-weight:800; color:var(--brand); letter-spacing:-.04em; line-height:1">Q&nbsp;400</span>
+          <span style="font-size:17px; color:var(--ink-muted); font-weight:600">/ mes</span>
+        </div>
+        <p style="margin-top:8px; font-size:14.5px; color:var(--ink-soft)">Plan de servicio · continúa automáticamente desde el mes&nbsp;13</p>
+        <div style="height:1px; background:#EEF1F6; margin-block:20px"></div>
+        <ul style="margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:11px; font-size:14.5px; color:var(--ink-soft)">
+          <li style="display:flex; gap:10px"><span style="color:var(--green-700); margin-top:2px"><svg class="icon-sm" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Alojamiento, base de datos y dominio</span></li>
+          <li style="display:flex; gap:10px"><span style="color:var(--green-700); margin-top:2px"><svg class="icon-sm" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Certificado HTTPS y respaldos diarios</span></li>
+          <li style="display:flex; gap:10px"><span style="color:var(--green-700); margin-top:2px"><svg class="icon-sm" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Soporte continuo, sin límite de consultas</span></li>
+          <li style="display:flex; gap:10px"><span style="color:var(--green-700); margin-top:2px"><svg class="icon-sm" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Actualizaciones de seguridad y mantenimiento técnico</span></li>
+          <li style="display:flex; gap:10px"><span style="color:var(--green-700); margin-top:2px"><svg class="icon-sm" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Ajustes de campos, textos y formatos de reporte</span></li>
+          <li style="display:flex; gap:10px"><span style="color:var(--green-700); margin-top:2px"><svg class="icon-sm" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span><strong>Hasta 4 horas mensuales</strong> de mejoras y funciones nuevas</span></li>
+        </ul>
+        <div class="callout" style="margin-top:20px">
+          <span style="color:var(--brand); margin-top:1px"><svg class="icon-sm" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
+          <div><strong>Un expediente clínico es un servicio vivo, no un archivo.</strong> Necesita alojamiento activo, respaldos diarios y parches de seguridad para seguir siendo seguro y confiable. Por eso el plan de servicio es parte del contrato y se renueva de forma automática cada año.</div>
+        </div>
+        <div class="callout" style="margin-top:12px">
+          <span style="color:var(--brand); margin-top:1px"><svg class="icon-sm" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5M12 15V3"/></svg></span>
+          <div><strong>Sus datos siempre son suyos.</strong> Puede exportar el expediente completo a PDF y CSV cuando quiera, sin pedir permiso y sin costo.</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-size:18px; font-weight:800; margin-top:44px">Formas de pago</h3>
+    <div class="tablewrap" style="margin-top:16px">
+      <table>
+        <thead><tr><th></th><th>Opción A — 12 meses</th><th>Opción B — Contado</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:600">Estructura</td><td>12 cuotas mensuales fijas</td><td>50% al firmar · 50% contra entrega</td></tr>
+          <tr><td style="font-weight:600">Al firmar</td><td class="num">Q 450.00</td><td class="num">Q 2,700.00</td></tr>
+          <tr><td style="font-weight:600">Resto</td><td class="num">11 cuotas de Q 450.00</td><td class="num">1 pago final de Q 2,700.00</td></tr>
+          <tr><td style="font-weight:600">Total del primer año</td><td class="num" style="font-weight:800; color:var(--brand)">Q 5,400.00</td><td class="num" style="font-weight:800; color:var(--brand)">Q 5,400.00</td></tr>
+          <tr><td style="font-weight:600">Intereses</td><td class="num" style="color:var(--green-700); font-weight:700">Q 0.00</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:12px; font-size:13.5px; color:var(--ink-muted)">Pagos por transferencia o depósito, con fecha fija cada mes. Precios en quetzales (GTQ), impuestos incluidos.</p>
+
+    <h3 style="font-size:18px; font-weight:800; margin-top:48px">Por qué esta inversión se paga sola</h3>
+    <div class="grid g3" style="margin-top:20px">
+      <div class="card" style="background:#fff">
+        <div class="num" style="font-size:34px; font-weight:800; color:var(--brand); letter-spacing:-.035em; line-height:1.05">1 sesión</div>
+        <p style="margin-top:10px; font-size:14.5px; color:var(--ink-soft)">Una sesión de fisioterapia privada en Guatemala vale entre <strong>Q&nbsp;250 y Q&nbsp;500</strong>. La cuota mensual equivale al ingreso de <strong>una sola sesión</strong>. Todo lo demás que atienda ese mes es margen.</p>
+      </div>
+      <div class="card" style="background:#fff">
+        <div class="num" style="font-size:34px; font-weight:800; color:var(--brand); letter-spacing:-.035em; line-height:1.05">1 falta</div>
+        <p style="margin-top:10px; font-size:14.5px; color:var(--ink-soft)">Con recordatorio automático a 24 horas y a 1 hora, más el aviso por WhatsApp: evitar <strong>una sola inasistencia al mes</strong> cubre casi toda la cuota. Evitar dos, la cubre con creces.</p>
+      </div>
+      <div class="card" style="background:#fff; border-color:var(--brand-200); border-width:2px">
+        <div class="num" style="font-size:34px; font-weight:800; color:var(--brand); letter-spacing:-.035em; line-height:1.05">9 meses</div>
+        <p style="margin-top:10px; font-size:14.5px; color:var(--ink-soft)"><strong>Aquí está el retorno real.</strong> Con un reporte de progreso en la mano, la conversación deja de ser <em>“¿regreso la otra semana?”</em> y pasa a ser <em>“vamos por las 10 sesiones, y aquí está la evidencia”</em>. <strong>Un solo paquete adicional al año</strong> (≈ Q&nbsp;4,000) paga nueve meses del sistema.</p>
+      </div>
+    </div>
+
+    <div class="grid g2" style="margin-top:24px">
+      <div class="card" style="background:#fff">
+        <h4 style="font-size:16px; font-weight:700">Hecho a su medida, no un molde</h4>
+        <p style="margin-top:10px; font-size:14.5px; color:var(--ink-soft)">Un software genérico por suscripción no puede reproducir <em>su</em> hoja de evaluación, ni sus escalas, ni su reporte de alta con su membrete y su número de colegiada. Este sí: el sistema se moldea a cómo usted ya trabaja, no al revés.</p>
+      </div>
+      <div class="card" style="background:#fff">
+        <h4 style="font-size:16px; font-weight:700">También está comprando un proveedor</h4>
+        <p style="margin-top:10px; font-size:14.5px; color:var(--ink-soft)">Soporte en español, en Guatemala, en su mismo huso horario, con la gente que construyó el sistema. No un formulario de ayuda en otro continente. Desde el año 2 incluye 4 horas mensuales de mejoras — eso es desarrollo, no solo alojamiento.</p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:24px">
+      <span style="color:var(--brand); margin-top:1px"><svg class="icon-sm" viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></span>
+      <div><strong>Con transparencia:</strong> existen suscripciones de software clínico entre Q&nbsp;210 y Q&nbsp;380 al mes. Son más baratas mes a mes — y son un molde diseñado para otro país del que <strong>nunca es dueña</strong>: si deja de pagar, pierde el acceso y sus expedientes. Aquí el código y los datos son suyos desde el primer año — lo que paga cada mes es que alguien lo mantenga vivo, seguro y mejorando. Si lo único que busca es una agenda barata, aquellas alcanzan. Si busca la evaluación progresiva que hoy no existe en ningún molde, este es el camino.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="grid g2" style="align-items:start">
+      <div>
+        <span class="eyebrow">Lo que necesitamos de usted</span>
+        <h2 class="h2" style="margin-top:16px">Seis cosas para arrancar</h2>
+        <ol style="margin:24px 0 0; padding-left:0; list-style:none; counter-reset:req; display:flex; flex-direction:column; gap:14px">
+          <li style="display:flex; gap:14px; align-items:flex-start"><span class="num" style="flex:0 0 26px; width:26px; height:26px; border-radius:var(--r-pill); background:var(--brand-50); border:1px solid var(--brand-200); color:var(--brand); font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center">1</span><span style="font-size:15px; color:var(--ink-soft)"><strong style="color:var(--ink)">Su hoja de evaluación actual</strong> — foto o archivo. Es lo más importante: el sistema se moldea a su formato, no al revés.</span></li>
+          <li style="display:flex; gap:14px; align-items:flex-start"><span class="num" style="flex:0 0 26px; width:26px; height:26px; border-radius:var(--r-pill); background:var(--brand-50); border:1px solid var(--brand-200); color:var(--brand); font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center">2</span><span style="font-size:15px; color:var(--ink-soft)">Logo en buena resolución (si lo tiene) y sus colores de marca.</span></li>
+          <li style="display:flex; gap:14px; align-items:flex-start"><span class="num" style="flex:0 0 26px; width:26px; height:26px; border-radius:var(--r-pill); background:var(--brand-50); border:1px solid var(--brand-200); color:var(--brand); font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center">3</span><span style="font-size:15px; color:var(--ink-soft)">La cuenta de Google que usa para su calendario.</span></li>
+          <li style="display:flex; gap:14px; align-items:flex-start"><span class="num" style="flex:0 0 26px; width:26px; height:26px; border-radius:var(--r-pill); background:var(--brand-50); border:1px solid var(--brand-200); color:var(--brand); font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center">4</span><span style="font-size:15px; color:var(--ink-soft)">Nombre completo, número de colegiada, NIT y dirección de la clínica.</span></li>
+          <li style="display:flex; gap:14px; align-items:flex-start"><span class="num" style="flex:0 0 26px; width:26px; height:26px; border-radius:var(--r-pill); background:var(--brand-50); border:1px solid var(--brand-200); color:var(--brand); font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center">5</span><span style="font-size:15px; color:var(--ink-soft)">El texto del consentimiento informado que usa hoy.</span></li>
+          <li style="display:flex; gap:14px; align-items:flex-start"><span class="num" style="flex:0 0 26px; width:26px; height:26px; border-radius:var(--r-pill); background:var(--brand-50); border:1px solid var(--brand-200); color:var(--brand); font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center">6</span><span style="font-size:15px; color:var(--ink-soft)">Aproximadamente 2 horas para la capacitación.</span></li>
+        </ol>
+      </div>
+
+      <div>
+        <span class="eyebrow">Condiciones</span>
+        <h2 class="h2" style="margin-top:16px">Las reglas, por escrito</h2>
+        <ul style="margin:24px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:12px; font-size:14.5px; color:var(--ink-soft)">
+          <li style="display:flex; gap:10px"><span style="color:var(--brand); margin-top:3px"><svg class="icon-sm" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></span><span>Los precios están en quetzales (GTQ) e incluyen impuestos.</span></li>
+          <li style="display:flex; gap:10px"><span style="color:var(--brand); margin-top:3px"><svg class="icon-sm" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></span><span>El alcance descrito arriba es el alcance contratado. Funcionalidad adicional solicitada durante el desarrollo se cotiza por separado y no altera el cronograma.</span></li>
+          <li style="display:flex; gap:10px"><span style="color:var(--brand); margin-top:3px"><svg class="icon-sm" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></span><span>Se contemplan <strong>2 rondas de ajustes</strong> sobre el diseño aprobado.</span></li>
+          <li style="display:flex; gap:10px"><span style="color:var(--brand); margin-top:3px"><svg class="icon-sm" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></span><span>Los datos clínicos son propiedad de FisioEnergy en todo momento y son exportables a PDF y CSV sin costo. El <strong>código fuente</strong> se entrega a FisioEnergy al completarse los 12 pagos del primer año; su operación, alojamiento y mantenimiento quedan a cargo de Servicios Digitales bajo el plan de servicio.</span></li>
+          <li style="display:flex; gap:10px"><span style="color:var(--brand); margin-top:3px"><svg class="icon-sm" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></span><span>Un atraso mayor a 30 días en las cuotas suspende el soporte hasta regularizar.</span></li>
+          <li style="display:flex; gap:10px"><span style="color:var(--brand); margin-top:3px"><svg class="icon-sm" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></span><span><strong>Los datos clínicos son datos sensibles.</strong> El sistema se entrega con consentimiento informado versionado, control de acceso por rol, cifrado y bitácora de accesos, en línea con el Decreto 57-2008 y anticipando la ley de protección de datos en trámite en el Congreso de Guatemala.</span></li>
+          <li style="display:flex; gap:10px"><span style="color:var(--brand); margin-top:3px"><svg class="icon-sm" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></span><span>Esta propuesta no incluye facturación electrónica FEL. Se cotiza en la Propuesta 2.</span></li>
+          <li style="display:flex; gap:10px"><span style="color:var(--brand); margin-top:3px"><svg class="icon-sm" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></span><span>A partir del mes 13, el <strong>plan de servicio de Q&nbsp;400 mensuales continúa de forma automática</strong> y forma parte del contrato mientras el sistema esté en operación. La renovación es anual y cualquier cambio de tarifa se avisa con 60 días de anticipación.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="background:linear-gradient(158deg,#015AFC 0%,#012FD3 46%,#0101A7 100%); color:#fff">
+  <div class="wrap" style="padding-block:64px">
+    <span class="eyebrow" style="color:#fff; background:rgba(255,255,255,.14); border-color:rgba(255,255,255,.28)">Siguiente paso</span>
+    <h2 style="font-size:clamp(26px,3.4vw,38px); font-weight:800; margin-top:18px; max-width:20ch">¿Arrancamos?</h2>
+
+    <div class="grid g2" style="margin-top:32px; align-items:start">
+      <ol style="margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:13px">
+        <li style="display:flex; gap:13px; align-items:flex-start"><span class="num" style="flex:0 0 26px; width:26px; height:26px; border-radius:var(--r-pill); background:rgba(255,255,255,.16); font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center">1</span><span style="color:rgba(255,255,255,.9); font-size:15.5px">Revisar la demo del sistema.</span></li>
+        <li style="display:flex; gap:13px; align-items:flex-start"><span class="num" style="flex:0 0 26px; width:26px; height:26px; border-radius:var(--r-pill); background:rgba(255,255,255,.16); font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center">2</span><span style="color:rgba(255,255,255,.9); font-size:15.5px">Confirmar la forma de pago — Opción A (12 cuotas de Q&nbsp;450) u Opción B (contado).</span></li>
+        <li style="display:flex; gap:13px; align-items:flex-start"><span class="num" style="flex:0 0 26px; width:26px; height:26px; border-radius:var(--r-pill); background:rgba(255,255,255,.16); font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center">3</span><span style="color:rgba(255,255,255,.9); font-size:15.5px">Enviarnos su hoja de evaluación actual.</span></li>
+        <li style="display:flex; gap:13px; align-items:flex-start"><span class="num" style="flex:0 0 26px; width:26px; height:26px; border-radius:var(--r-pill); background:rgba(255,255,255,.16); font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center">4</span><span style="color:rgba(255,255,255,.9); font-size:15.5px">Agendar la reunión de arranque — el cronograma empieza a correr ese día.</span></li>
+      </ol>
+
+      <div style="display:flex; flex-direction:column; gap:12px">
+        <a class="pill btn-on-hero noprint" href="https://wa.me/50239607045?text=Hola%2C%20le%20escribo%20por%20la%20propuesta%20del%20sistema%20FisioEnergy." target="_blank" rel="noopener" style="justify-content:center">
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.6 14.2c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.7-4.4-3.9-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.1.1.3 0 .5l-.3.4-.4.4c-.1.1-.3.3-.1.5.1.3.6 1.1 1.4 1.7 1 .8 1.7 1.1 2 1.2.2.1.4.1.5-.1l.7-.9c.2-.2.3-.2.5-.1l1.8.9c.2.1.4.2.4.3.1.1.1.6-.1 1.2z"/></svg>
+          Escribir por WhatsApp
+        </a>
+        <a class="pill noprint" href="mailto:info@serviciosdigitalesgtm.com?subject=Propuesta%20FisioEnergy" style="justify-content:center; background:rgba(255,255,255,.12); color:#fff; border-color:rgba(255,255,255,.3)">
+          <svg class="icon" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+          info@serviciosdigitalesgtm.com
+        </a>
+        <p style="color:rgba(255,255,255,.72); font-size:14px; text-align:center; margin-top:4px">Con gusto ajustamos lo que haga falta antes de firmar.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:60px; padding-top:36px; border-top:1px solid rgba(255,255,255,.18)">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAP0AAAA8CAYAAACtgbztAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAADztJREFUeAHtXf952zgPhvv0/+aboOoEl5ugygTXTlB1gqQT2JmguQmsTtB0AisTpJnAugnONwE+viGVyDAoUpJ/yLbe52FTUyRIigIJAiA5oRqYOTF/rk34ZEJCx4/ChNyEh8lkUtKIESNoUv3HMPyN+TM14YJOD6UJnw3j/6YRI84cz0xvGH5GluFPGSsTrvbF+OadYvBMTfjo/l64sKqFexN+NUkhhg6krr+oH1DGfY1mav58ic/+Ut8nEwpDayUTGJpzGWfSfaUIOAlz6quzeZ6RfY8v9THPvlGYbkr23f9hwqWLrvqgNAHfwo/QN+H4432H8hOyfZcq5Vd1QBtbS6KRbXuo9/taxfh8sKQ9wJRzY8K/Leo1Z/uBaLSm3B9TQTPjfpgp9Vwo6VKKe1/flbwfa8/n4tkyQO/SUx8fkDZpoLdoWX7Ssnzmhm+gZ9uWbCeOF7yh05/h60Bn9J01G8GWIb5Tu2VSZsIiptMHgilvzuy3SrrYd/1J/C7NDPVAHcB2mfpIdhaMBdKCOdpIP77ysw7lAxnZb+CygTaeLVrSTkz4WW8bmP6SzgufaEdwHa4NohC5CrJKRYhbmjiZmDCn40HmGKwC2iTF/owCYCsNJCL6jjrAzWjfPY9RN9SxoM16VsibmC6yfPThhaf80pXvW04k1Dz4//TQBr3chcKT947tkvO5oueGBe0IrItdU0/aj2xFL4kLkW6qpEHe9y2CpKmJ93815P/ImyI28CjoamJ6GnhnGt0kkGap0IEUt1RoLbi2VIh4/wsK92ub8peuLNkHF2z7IbYOn5R0j5JurS4/lfTTKkGbtecpYJdMvxRlPQbSp0r9/hJppkqa99QDrDP9x4h8i6a6eNrzPUBzyYH+4Tim19q0CJR9wTrTpYF2x5a/ZIUpRb4ksg5TJc3HAG3J25AU6C1Z0SCl88Fv2h/QoReatrtWl5mI+4eGi4I2v5X/kauzaWdh2lvSurgOZrj1aPxT2hTtc+qGayWu0XqAOpk6II0cHKARL6gdNInuqqHvqzqUnjp8iahDakKT7gMWhvoEUeKft6R35CnjnnaHktY/YozyEMFmpnN/yMTug7il48Y78Tun9YEM7wDr5ELJqynOflFLuNlUrsWLSDOYNgm0WtezXY4kIvo+1gznBkt8C3WpAPqB+qClTQYzV/atVpaJy5U8z0z/N1mFS0Knj7yrVjgSYOxUxCVkFUQ52Q8fAfbTgroDZpsPMQl7liORKnFP4jfewUzE+WatVPzOQzOjBxqTFhQBN9tnIrqttJVQx/JrwGSU1X5j6fHe1O+f2nPNKoQ8kKYqJSW+7yL4Htna/k59bb/kPZjETBl5ZH3wvucsbKgKvSn3gIdmqzU927XvTMnz6Em/4M22SkVWGlsHDqzpWVdyXdOWwIE1ved9tjL/sd7PlyKN1k4fFqgDK988THbkPJL+JCfznyAwSv65D/97U0ZGmzOdBjAB0kLLuuQt2Ih74t7VYyOYZwjamvXOR0v81sRv2d6yhxTmM5HtC++UuJK2TNd5132IpJ2SXWqhD9eUqW9rBEsQZDvaYvbpbK8cCF7ssjsW6Tdgyrs17xFiLj7sjMJLJzyHhPDB5J3RYVC5CcfiTtNTOFQifp0eBo2i9jsVeQo6XvynxCXUrGTrhBqfZmS/rzQiGzxEwdOY+FZvFaKo6F6Z5BThOgdKulsnYqVkPdQwmCaebFOTtohYh2OG3edMVgfKhWLyb18Ct06WViEsIS/cM8QnIpuXXmSdJNoMYEPFf74HTkmHiQLtrPZ3IPgm64SsTuDrWxqxc7gBIHeBnDSVke6xhrVoQc24qyl4tgXNow7AR1RnoFUTw9eAAS+t/QYNDHqVBLRWds+NUKUSl1Ak2K7/6218Ujeq+OGzAPygeGjMWlIATmH3ywWqTTCQrBKRHLqHbyPTbwlO6SJ9zX94TCnP0pRbAkj77KGWVTfaMoitF9esFgXfA6S9ayLmMUNlpFs4GmlFoFTiUorHjNbrifq0YfpSiWvbj6n4/buugedNz051YKomGEiMZN12ZT3+oBHbgUeDG9xwwtaVsg6pGZ4qdPfmkcdWcy8tOxvaeE/e70o+TQOdBOjMm96RS7NQ6KYUrqNmRbgO0N5a+S6vZhmZizSNzz10r5V8H9/QiG1BE/HSpgysO3WUNCC42UbOxGD4GJPYLyWf/FhjnWhC0GbmOTdvmdXqA7R2ECJdlG8s39UhI90yIp22SvH7E4dN0Jq08R+N2B5Y93VAx6dcmxnZzp7otEcl/RdBc6qkwQietQipoNnFTt91ttfa6G2vh8Zc5Fl60i0V+oj7wjWbN1t/92tP+rlCdxFZ/sLTxjnXvgG27zNlfbORrw5T9rctEWl9tBvPARjRAWwPz+iDpdKBU+4PKSq2YvqGekwj3sm0oV7/UgQ4nun7OpktWZk9OZ7pE9YHkrZ10HbO+TYHtcHzADuK91uEU27NqBsgRn/ehwNRR0BjL7X7Nxye7Zs0/W2UZUE4C8AVdVsildTz/bu8XcsHCnK2dIX28/fRg/bL/o+R6bcMOOaQ9W4sIrOgM3Oynd3HbLVTdF3bu3yF53FOW0aN8fPILM9+B7Sl9w/GNwFec9gsU0ZmK0zITL6rJp950bYVxaEwIXXfpaWjpWK7/jmU6agNVi78nnTbqLFTsBUVYSJJyTIIfld1Lun18MJVA41L6m9m+afu8OPqJcX54OGMblaXFgnY7X8F8qltaPDok/lT2jyYMqhs41fHlcohCqHV++9Tvssry79wZVd1eOg62DjaaY3uc91o3Rt1w59jIojc0PEeg13tMvp7wCLyiBHDAcfvDjsGzPl4DpkcMWL/MAxyx6eHJQe2rY4YcY6YsF2vLOh0cXvAnWsjRgwO0N5v7bCBgWLK60c1jxhx1sBMDweJY1TctQG0mVdDNomNGLEvgOmZzgMwX1zRiBFnDoj3g7Nv7wjwRz70kVQjRhwcYPpzEnkzGjHizAGmb3O6x7EDs32vvegjRhw73riztgo6H4y2+xFnjeq4rOpanYROHzvbU8D6TSs+tNovwMqBG5PIiyxq9fqD1v20S7I6nacWtBJqqAdbP/ttWINKnzs16yfSrGKtM1odJx0uBWH9EJS2KJvcxgN9h4tGfnd2O2e7X3fOp4+ftCOwvk+9CUt2ByxE0J7LzBF5sJzBufoxe8yXHOG+zMr+ePF8ydvBF2r3jqMPiODI/fERdKa8u3Zib35s3z1yCyV1/dx7jPhfTebqFNOhrX2rnX8J9cOQfBISWr+WaGv76Q29GenHMIXqghN9bkMHXx4Qvo8bTJJOtnuN10HA9ggt7QorH8AX2DvzIcb7VDv3vqQd7HPeFvj1TLGETgvouIVp31Vfxjc0wLBdPS3xoeFASxoa4/Pr8c4+xNz0Omi4NgYPvfRgavKvQv12dEdgQ/HI9nhf3KN2DJ6EOW0epoB6Q6GYiHj8BuP/2fV8ADcoagxfurpgH/i/tfIw2NzQZl3A+PcdBqB78vdLRpt1KjxptXP9peQij9iGlPLtwGcrgOHalC8vANWks4LsQR9PVdvY6iXQz5mSf6hSWj/w5vHKsdjZ5iJuf+Ak0i+VPFMl7Vwm8tDU6H0P1Bv6nDwmHwfW9IFyJFrNaErbvig0gxIO73ZN3/d48mWburHOB43K5GM+LuuJjhzOXPpVedRpgxDbWT4R0bkp5xs112PlypQz1GDMm0rbVu7knUIkPXaTbCJ+h6QGvINShHdNGY6Z6d/RCcApnu5F9PMRydQe2uUaUXfEec6yS2g4kAq8e/G3Qtrx3Q0FpfiNE35n7LGqwEyJM/lEaLyL8piZPqXTgeYV2eVcvET8jrZdAyYtrAdroAGAdQVexezauwveLDRg5Eoclnswy83Zc+d8GxzlXXZszVHHLsbVoTHmJbXHZQTdY4Rcp5fVwZTuFtyC1gcF6EpuD6TQKzhSzeFOzZWAZJbR5gB+QbVLT00ZJVnJ7Nek3WWbx8X0TmzDqJfSiDWwfv78ypM22gZsPqivdHjIAb4QvyvfkgpoG5YDfa6/7oqEesANYtgCHvKQxbOM7ABXkpV47mIGujWmdx9OddF9l5lml0hoRBOimZ50c6EPB2V6tuccJiI6F78h0WyY7+gwTN8bzkz6geN9UhKXDqL/VcjM+sL0bhad0+kz1yFtuDsDOloRK6Nm84FDrs9Lqahys2NO61YPKPQuJ/s/LamkLcFZd3J+vQY9pWYpN6EIP49npnej6c580geGkoaHRIkrqT3kbJd40pWe+Asa0EDhFFaZiM49iizNhAtG2TfTp9oFE33gBi4ELGOqSy4yer3oog78vqbNW29f8Na9wEbnjRNDQcODpqnv8rGWtL4sg7nnQo76vmPD2DrLZDQcpErcjOLvC8TMf0tHAre8lrv/SpnOSToPjndntGnODDrnIENC54MHGhBcR98oj7o4HxVKXJsjwlIaFtpsGNLQ1d/hUIDEvayHJg8/d29eRptL1oQa8IbO61CJfHJYv+w1OIa/I92LrqT20O5Xm8XYdZ0ZNJhuX3DMmlB/9B04Do0u/Nn4jWNNPzQt/S5xCFEvMR+wXOOB2bEu0za6AJ3qCe8+xWaNsqDcmU2UCyPdwDOj4d1/oEkoMwoDTFL/plNtiSPRQiIoAwMytO5tnJpWtboVynMM2qtA30k9TPPSkM8HXbcrRoPbH6KhYeqhPZcJPemwjvcdvID4BdvDGfB3yQEo9KehNA3vR2LuSZfEplXyXit5pyLNgrtj2vQuOmAeWbelezZ3AR56vn5Omt4RxPuSTh+lCd9o+JjV7xHvAqfp9bUVM0JKdjbE30RJs29tt4ZUibunOGBGlLP6DR0PPpPOkwnZ95K5AGlGs7TMQktDMH1Op42S7O02g1nLKyjImnq2svxw9t0P1M5SUZL9qIbgged1uw3B9bMcuI5GoefqD+tKTu2AfJ9jviGs6eG1hJFwMPbZLaIky/Al7QfQuOaRaUsXfkUOSK2sDq7NV2xtutU6V84OSFPQqw83nFzwPG8g/UTdJ4pc/C5kAld+ZZeu0Fb6gKQjB466FhxSQ0nd8CT+n1M/FDLC9V11dB18DSqvxKSWbOUC8qM9D7ET27PCge0Fj6dmq8eL+DrwGX7EiMMBjM9xJ28OHQtuOK1mxIhzx5ppga3WD2JRSsdjyivpVRwsJoEDBEaMOHf8H371e0vEM/c+AAAAAElFTkSuQmCC" alt="Servicios Digitales" style="height:40px; width:auto; display:block">
+      <p style="font-size:15px; color:rgba(255,255,255,.72); margin-top:14px; max-width:34ch">Digital y verdaderamente tuyo.<br>Software y sistemas a la medida, desde Guatemala.</p>
+      <div class="num" style="display:flex; flex-wrap:wrap; gap:10px 28px; font-size:14px; color:rgba(255,255,255,.86); margin-top:26px">
+        <span style="display:inline-flex; align-items:center; gap:8px"><svg class="icon-sm" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>+502 3960 7045</span>
+        <a href="https://serviciosdigitalesgtm.com" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; color:rgba(255,255,255,.86)"><svg class="icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20 15.3 15.3 0 0 1 0-20Z"/></svg>serviciosdigitalesgtm.com</a>
+        <span style="display:inline-flex; align-items:center; gap:8px"><svg class="icon-sm" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>@serviciosdigitales.gt</span>
+      </div>
+      <p style="margin-top:30px; font-size:12.5px; color:rgba(255,255,255,.5); max-width:60ch">Propuesta 1 de 2 · La Propuesta 2 (tienda en línea, pagos y portal del paciente) se presenta una vez que este sistema esté funcionando.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
